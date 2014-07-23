@@ -8,6 +8,6 @@ namespace MyDef
 {
     class def
     {
-        public const string dbName = "Server = BaoYu-PC; database = OurTmallManage; uid = SA; pwd = 123";
+        public const string dbName = "Server = BAOYU-PC; database = OurTmallManage; uid = SA; pwd = 123";
     }
 }
