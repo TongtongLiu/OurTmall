@@ -1,5 +1,0 @@
-C:\Users\BaoYu\Desktop\OurTmall_v2\OurTmall_v2\bin\OurTmall_v2.dll
-C:\Users\BaoYu\Desktop\OurTmall_v2\OurTmall_v2\bin\OurTmall_v2.pdb
-C:\Users\BaoYu\Desktop\OurTmall_v2\OurTmall_v2\obj\Debug\OurTmall_v2.dll
-C:\Users\BaoYu\Desktop\OurTmall_v2\OurTmall_v2\obj\Debug\OurTmall_v2.pdb
-C:\Users\BaoYu\Desktop\OurTmall_v2\OurTmall_v2\obj\Debug\OurTmall_v2.csprojResolveAssemblyReference.cache
