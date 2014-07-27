@@ -42,25 +42,27 @@ function isValidTel(t) {
 }
 
 function CheckFile(obj) {
-    var array = new Array('bmp', 'png', 'jpg');  //可以上传的文件类型  
-    if (obj.value == '') {
-        return true;
-    }
-    else {
-        var fileContentType = obj.value.match(/^(.*)(\.)(.{1,8})$/)[2]; //这个文件类型正则很有用：）  
-        var isExists = false;
-        for (var i in array) {
-            if (fileContentType.toLowerCase() == array[i].toLowerCase()) {
-                isExists = true;
-                return true;
-            }
-        }
-        if (isExists == false) {
-            obj.value = null;
-            return false;
-        }
-        return false;
-    }
+		var array = new Array('bmp', 'png', 'jpg');  //可以上传的文件类型  
+		if (obj.value == '') {
+				return true;
+		}
+		else {
+				var fileContentType = obj.value.match(/^(.*)(\.)(.{1,8})$/)[2]; //这个文件类型正则很有用：）  
+				var temp = obj.value.lastIndexOf(".");
+				var postfix = obj.value.substring(temp + 1);
+				var isExists = false;
+				for (var i in array) {
+						if (postfix.toLowerCase() == array[i].toLowerCase()) {
+								isExists = true;
+								return true;
+						}
+				}
+				if (isExists == false) {
+						obj.value = null;
+						return false;
+				}
+				return false;
+		}
 }
 
 function checkStoreValidate()

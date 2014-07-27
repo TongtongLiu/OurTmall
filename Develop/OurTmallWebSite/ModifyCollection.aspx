@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ModifyUserInfo.aspx.cs" Inherits="ModifyUserInfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ModifyCollection.aspx.cs" Inherits="ModifyCollection" %>
 
 <!DOCTYPE html>
 <html class="ks-webkit537 ks-webkit ks-chrome36 ks-chrome" xmlns="http://www.w3.org/1999/xhtml">
@@ -17,21 +17,21 @@
         <link rel="dns-prefetch" href="http://tmm.taobao.com/"/>
         <link rel="dns-prefetch" href="http://bar.tmall.com/"/>    
         <meta name="spm-id" content=""/>
-        <title>用户信息修改</title>
+        <title>我的收藏</title>
         <link rel="shortcut icon" href="http://g.tbcdn.cn/mui/global/1.2.35/file/favicon.ico" type="image/x-icon"/>
         <link title="天猫Tmall.com" href="http://g.tbcdn.cn/mui/global/1.2.35/file/search.xml" type="application/opensearchdescription+xml" rel="search"/>
         <script>
-          window.g_config = {};
-          window.g_config.headerVersion = '1.0.0';
-          window.g_config.loadModulesLater = true;
+        		window.g_config = {};
+        		window.g_config.headerVersion = '1.0.0';
+        		window.g_config.loadModulesLater = true;
         </script>
         <script>
-          window.g_config = window.g_config || {};
-          window.g_config.moduleTimeStamp = {
-            minilogin: 20130704,
-            globalCss: 20131024,
-            globalJs: 20131018
-          }
+        		window.g_config = window.g_config || {};
+        		window.g_config.moduleTimeStamp = {
+        				minilogin: 20130704,
+        				globalCss: 20131024,
+        				globalJs: 20131018
+        		}
         </script>
         <link rel="stylesheet" href="./css/global.css"/>
         <!--head fix rgn-->
@@ -44,29 +44,20 @@
         <base href="." target="_blank"/>
         <link charset="utf-8" href="./css/searchbarSuggest.css" rel="stylesheet"/>
         <link charset="utf-8" href="./css/overlay.css" rel="stylesheet"/>
-        <style>
-        		.invisableThing {
-						display:none;
-        		}
-        </style>
-		<link rel="stylesheet" href="./css/app-config.css"/>
-		<link rel="stylesheet" href="./css/tbra.css"/>
-		<link rel="stylesheet" href="./css/mission.css"/>
-		<link rel="stylesheet" href="./css/pf-base.css"/>
-		<link rel="stylesheet" href="./css/mt-tips.css"/>
-		<link rel="stylesheet" href="./css/tbsp.css"/>
-		<link rel="stylesheet" href="./css/mytaobaoMtbase.css"/>
-		<link rel="stylesheet" href="./css/global-min.css"/>
-		<link rel="stylesheet" href="./css/xcommonBase.css"/>
 		<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript" src="./js/ModifyUserValidation.js"></script>
-    
+
+		<link rel="stylesheet" href="css/app-config.css"/>
+		<link rel="stylesheet" href="css/mercuryIndex.css"/>
+		<link rel="stylesheet" href="css/global-min2.css"/>
+		<link rel="stylesheet" href="css/tbsp.css"/>
+		<link rel="stylesheet" href="css/mytaobaoMtbase.css"/>
+		<link rel="stylesheet" href="css/global-min.css"/>
     </head>
 
     <body>
         <div id="mallPage" class="tms-page mallAct tmall-  page-not-market">
             <!-- --><!--商城通用顶通-->
-<div id="site-nav" data-spm="a2226mz"> 
+          <div id="site-nav" data-spm="a2226mz"> 
       <div id="sn-bg">
         <div class="sn-bg-right"> 
         </div> 
@@ -98,7 +89,7 @@
                 <div class="menu-bd"> 
                   <div class="menu-bd-panel"> 
                     <a href="./Colloection.aspx" target="_top" rel="nofollow">收藏的宝贝</a> 
-                    <a href="./C" target="_top" rel="nofollow">收藏的店铺</a> 
+                    <a href="./Colloection.aspx" target="_top" rel="nofollow">收藏的店铺</a> 
                   </div> 
                 </div> 
               </div> 
@@ -194,74 +185,6 @@
         </div> 
       </div> 
     </div>
-            <!--<div id="site-nav" data-spm="a2226mz" role="navigation">
-                <div id="sn-bg">
-                    <div class="sn-bg-right">
-                    </div>
-                </div>
-                <div id="sn-bd">
-                    <b class="sn-edge"></b>
-                    <div class="sn-container">
-                        <p class="sn-back-home"><i class="mui-global-iconfont">&#983339;</i><a href="http://www.tmall.com/">天猫首页</a></p><p id="login-info" class="sn-login-info"><em>喵，欢迎来天猫</em><a class="sn-login" href="http://login.tmall.com/?redirect_url=http%3A%2F%2Fregister.tmall.com%2F%3Fspm%3D3.7328325.a2226mz.2.Dg782T" target="_top">请登录</a><a class="sn-register" href="http://register.tmall.com/" target="_top">免费注册</a></p>
-                        <ul class="sn-quick-menu">
-                            <li class="sn-mytaobao menu-item j_MyTaobao">
-                                <div class="sn-menu">
-                                    <a class="menu-hd" href="http://i.taobao.com/my_taobao.htm" target="_top" rel="nofollow" tabindex="0" aria-haspopup="menu-2" aria-label="右键弹出菜单，tab键导航，esc关闭当前菜单">我的淘宝<b></b></a>
-                                    <div class="menu-bd" role="menu" aria-hidden="true" id="menu-2">
-                                        <div class="menu-bd-panel" id="myTaobaoPanel">
-                                            <a href="http://trade.taobao.com/trade/itemlist/list_bought_items.htm?t=20110530" target="_top" rel="nofollow">已买到的宝贝</a>
-                                            <a href="http://trade.taobao.com/trade/itemlist/list_sold_items.htm?t=20110530" target="_top" rel="nofollow">已卖出的宝贝</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="sn-seller-center hidden j_SellerCenter">
-                                <a target="_top" href="http://mai.taobao.com/seller_admin.htm">商家中心</a>
-                            </li>
-                            <li class="sn-mybrand"><i class="mui-global-iconfont">&#13385;</i>
-                                <a target="_top" id="J_SnMyBrand" class="sn-mybrand-link" href="http://mybrand.tmall.com/?&type=0&scm=1048.1.1.1">我关注的品牌</a>
-                            </li>
-                            <li class="sn-cart mini-cart menu"><i class="mui-global-iconfont">&#983368;</i>
-                                <a class="sn-cart-link" href="http://cart.tmall.com/cart/myCart.htm?from=btop" target="_top" rel="nofollow" id="mc-menu-hd">购物车<span class="mc-count mc-pt3">0</span>件</a>
-                            </li>
-                            <li class="sn-favorite menu-item">
-                                <div class="sn-menu">
-                                    <a class="menu-hd" href="http://favorite.taobao.com/collect_list-1-.htm?scjjc=c1" target="_top" rel="nofollow" tabindex="0" aria-haspopup="menu-4" aria-label="右键弹出菜单，tab键导航，esc关闭当前菜单">收藏夹<b></b></a>
-
-                                    <div class="menu-bd" role="menu" aria-hidden="true" id="menu-4">
-                                        <div class="menu-bd-panel">
-                                            <a href="http://shoucang.taobao.com/item_collect.htm" target="_top" rel="nofollow">收藏的宝贝</a>
-                                            <a href="http://shoucang.taobao.com/shop_collect_list.htm" target="_top" rel="nofollow">收藏的店铺</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="sn-separator"></li>
-                            <li class="sn-mobile">
-                                <i class="mui-global-iconfont">&#13384;</i>
-                                <a title="天猫无线" target="_top" class="sn-mobile-link" href="http://mobile.tmall.com/?scm=1027.1.1.1">手机版</a>
-                            </li>
-                            <li class="sn-home">
-                                <a href="http://www.taobao.com/">淘宝网</a>
-                            </li>
-                            <li class="sn-seller menu-item">
-                                <div class="sn-menu J_DirectPromo">
-                                    <a class="menu-hd" href="http://shangjia.tmall.com/portal.htm?spm=3600.7326145.a2226mz.19.hvXP0t" target="_top" tabindex="0" aria-haspopup="menu-6" aria-label="右键弹出菜单，tab键导航，esc关闭当前菜单">商家支持<b></b></a>
-                                    <div class="menu-bd sn-seller-lazy" role="menu" aria-hidden="true" id="menu-6">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="sn-sitemap">
-                                <div class="sn-menu">
-                                    <h3 class="menu-hd" tabindex="0" aria-haspopup="menu-8" aria-label="右键弹出菜单，tab键导航，esc关闭当前菜单"><i class="mui-global-iconfont"></i><span>网站导航</span><b></b></h3>
-                                    <div class="menu-bd sn-sitemap-lazy sn-sitemap-bd" data-spm="a2228l4" role="menu" aria-hidden="true" id="menu-8">
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->   
             <div id="header" data-spm="a2226n0">
                 <div class="headerLayout">
                 <!-- global logo -->            
@@ -286,16 +209,16 @@
 
                                            <div class="s-combobox" id="s-combobox-113">
                                                <div class="s-combobox-input-wrap">
-                                                   <input type="text" name="q" id="mq" tabindex="9" accesskey="s" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" class="s-combobox-input" role="combobox" aria-haspopup="true" title="请输入搜索文字" aria-label="请输入搜索文字"/>
+                                                   <input type="text" name="q" id="mq" tabindex="9" accesskey="s" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" class="s-combobox-input" role="combobox" aria-haspopup="true" title="请输入搜索文字" aria-label="请输入搜索文字">
                                                </div>
                                            <label for="mq" class="s-combobox-placeholder" style="color: rgb(102, 102, 102); visibility: visible;"></label></div>
                                            <button type="submit">搜索</button>
-                                           <input type="hidden" name="user_action" value="initiative"/>
-                                           <input type="hidden" name="at_topsearch" value="1"/>
-                                           <input type="hidden" name="sort" value="st"/>
-                                           <input id="J_Type" type="hidden" name="type" value="p"/>
-                                           <input id="J_Cat" type="hidden" name="cat" value="all"/>
-                                           <input type="hidden" name="vmarket" value=""/>
+                                           <input type="hidden" name="user_action" value="initiative">
+                                           <input type="hidden" name="at_topsearch" value="1">
+                                           <input type="hidden" name="sort" value="st">
+                                           <input id="J_Type" type="hidden" name="type" value="p">
+                                           <input id="J_Cat" type="hidden" name="cat" value="all">
+                                           <input type="hidden" name="vmarket" value="">
                                        </div>
                                    </fieldset>
                                </form>
@@ -305,75 +228,16 @@
             </div>
         </div>
 
+
 		<div id="content" class="layout grid-s160m0">
-				<!-- 信息显示及修改部分 -->
 				<div class="col-main">
 						<div class="main-wrap">
-								<!-- 开始个人信息的修改 -->
-								<div id="profile" class="sns-config">
-										<div class="sns-box box-detail">
-												<div class="bd">
-														<div class="sns-nf">
-																<div style="font-size:15px;margin:10px 0;">
-																		您可以在这里修改个人资料哦~
-																</div>
-																<asp:Label ID="CorrectPrePassWord2" runat="server" CssClass="invisableThing" />
-																<form id="ModifyUserInfoForm" runat="server">
-																		<div id="MainProfile" class="parts">
-																				<p>
-																						<label class="noticeInfo">昵称：</label>
-																						<asp:TextBox runat="server" id="ModifyUserName" CssClass="f-txt" ReadOnly="true" />
-																						<span class="noticeInfo">(不可修改)</span>
-																						<span id="ModifyUserNameErrorInfo" style="color:red"  class="noticeInfo"></span>
-																				</p>
-																				<p>
-																						<label  class="noticeInfo">原密码：</label>
-																						<asp:TextBox runat="server" id="PrePassWord" TextMode="Password" CssClass="f-txt" />
-																						<span class="noticeInfo">(必填)</span>
-																						<span id="PrePassWordErrorInfo" style="color:red" class="noticeInfo"></span>
-																				</p>
-																				<p>
-																						<label class="noticeInfo">新密码：</label>
-																						<asp:TextBox runat="server" id="NewPassWord" TextMode="Password" CssClass="f-txt" />
-																						<span class="noticeInfo">(选填)</span>
-																						<span id="NewPassWordErrorInfo" style="color:red" class="noticeInfo"></span>
-																				</p>
-																				<p>
-																						<label class="noticeInfo">确认新密码：</label>
-																						<asp:TextBox runat="server" id="NewPassWord2" TextMode="Password" CssClass="f-txt" />
-																						<span class="noticeInfo">(选填)</span>
-																						<span id="NewPassWord2ErrorInfo" style="color:red" class="noticeInfo"></span>
-																				</p>
-																				<p>
-																						<label class="noticeInfo">修改电话：</label>
-																						<asp:TextBox runat="server" id="NewTelephone" CssClass="f-txt" />
-																						<span class="noticeInfo">(可修改)</span>
-																						<span id="NewTelephoneErrorInfo" style="color:red" class="noticeInfo"></span>
-																				</p>
-																				<p>
-																						<label class="noticeInfo">修改邮箱：</label>
-																						<asp:TextBox runat="server" id="NewEmail" CssClass="f-txt" />
-																						<span class="noticeInfo">(可修改)</span>
-																						<span id="NewEmailErrorInfo" style="color:red"></span>
-																				</p>
-																				<p>
-																						<label class="noticeInfo">修改头像：</label>
-																						<asp:FileUpload ID="NewAvatar" runat="server" CssClass="noticeInfo" />
-                                            <span id="NewAvatarErrorInfo" style="color:red"></span>
-																				</p>
-																				<p>
-																						<asp:Button ID="SubmitModificationButton" runat="server" Text="提交更改" CssClass="btn btn-large tsl" OnClick="SubmitModificationButton_Click" OnClientClick="return checkUserModificationValidate()" />
-																				</p>
-																		</div>
-																</form>
-														</div>
-												</div>
-										</div>
+								<div style="font-size:15px; margin-top:15px; margin-left:15px; margin-bottom:15px">
+										您可以在这里修改自己的收藏~
 								</div>
 						</div>
 				</div>
 
-				<!-- 边栏 -->
 				<div class="col-sub">
 						<style>
 								#Content .main-wrap,
@@ -400,19 +264,20 @@
 										<dl class="mt-menu-item mt-account-manage no-decoration">
 												<dt>账号管理</dt>
 												<dd id="BaseInfo">
-														<a href="./ModifyUserInfo.aspx" target="_self">个人资料</a>
+														<a href="ModifyUserInfo.aspx" target="_self">个人资料</a>
 												</dd>
 												<dd id="DeliveryAddress">
-														<a href="./ModifyDeliveryAddress.aspx" target="_self">收货地址</a>
+														<a href="ModifyDeliveryAddress.aspx" target="_self">收货地址</a>
 												</dd>
 												<dd id="Collections">
-														<a href="./ModifyCollection.aspx" target="_self">我的收藏</a>
+														<a href="ModifyCollection.aspx" target="_self">我的收藏</a>
 												</dd>
 										</dl>
 								</div>
 						</aside>
 				</div>
 		</div>
+
 		</div>
 </body>
 </html>

@@ -37,10 +37,12 @@ function CheckFile(obj) {
         return true;
     }
     else {
-        var fileContentType = obj.value.match(/^(.*)(\.)(.{1,8})$/)[2]; //这个文件类型正则很有用：）  
+    	var fileContentType = obj.value.match(/^(.*)(\.)(.{1,8})$/)[2]; //这个文件类型正则很有用：）  
+    	var temp = obj.value.lastIndexOf(".");
+    	var postfix = obj.value.substring(temp + 1);
         var isExists = false;
         for (var i in array) {
-            if (fileContentType.toLowerCase() == array[i].toLowerCase()) {
+        		if (postfix.toLowerCase() == array[i].toLowerCase()) {
                 isExists = true;
                 return true;
             }
