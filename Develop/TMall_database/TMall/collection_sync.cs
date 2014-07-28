@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace MyCollection
     class collectionSync
     {
         private bool collectionExist;//收藏是否存在，存在为true, 不存在为false
-        private SqlConnection myConnection;//声明sqlconnection对象
-        private SqlDataAdapter myAdapter;
+        private SqlConnection myConnection;//声明sqlconnection对象,连接数据库
+        private SqlDataAdapter myAdapter;//声明SqlDataAdapter对象
         private DataTable myData;
 
         //*********************************************************//
@@ -31,10 +32,10 @@ namespace MyCollection
             myAdapter.Update(myData);//更新到数据库
         }
 
-        //*******************************************************************************//
-        public bool judgeIfProductExist(long iCollectionID, long iConsumerID)
+        private bool ifExist(long iConsumerID, int iObjectType, long iObjectID)
         {
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id ='" + iCollectionID.ToString() + "'", myConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
+                "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
             new SqlCommandBuilder(adp);
             DataTable table = new DataTable();
 
@@ -42,14 +43,7 @@ namespace MyCollection
             if (table.Rows.Count == 0)
                 return false;
             else
-            {
-                for (int i = 0; i < table.Rows.Count; i++)
-                {
-                    if (Convert.ToInt64(table.Rows[i]["consumer_id"]) == iConsumerID)
-                        return true;
-                }
-                return false;
-            }
+                return true;
         }
 
         //*******************************************************************************//
@@ -61,30 +55,31 @@ namespace MyCollection
             collectionExist = false;
         }
 
-        public collectionSync(long iCollectionID, long iConsumerID)
+        public collectionSync(long iConsumerID, int iObjectType, long iObjectID)
         {
-            if(iCollectionID == 0 || iConsumerID == 0)
+            if(iObjectID == 0 || iConsumerID == 0 || iObjectType == 0)
                 return;
             //构造myconnection对象
             myConnection = new SqlConnection(def.dbName);
             myConnection.Open();
 
-            if (!judgeIfProductExist(iCollectionID, iConsumerID))//不存在
+            if (!ifExist(iConsumerID, iObjectType, iObjectID))//不存在
                 collectionExist = false;
             else
                 collectionExist = true;
 
-            if (collectionExist == false)//不存在
+            if (collectionExist == false)//不存在,添加
             {
-                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id ='" + iCollectionID.ToString() + "'", myConnection);
-                DateTime dt = DateTime.Now;
-                DataTable table = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection]", myConnection);
                 new SqlCommandBuilder(adp);
-                adp.Fill(table);
+                DataTable table = new DataTable();
                 DataRow row = table.NewRow();
+                adp.Fill(table);
+
+                DateTime dt = DateTime.Now;
                 row["consumer_id"] = iConsumerID;
-                row["object_type"] = 0;
-                row["object_id"] = iCollectionID;
+                row["object_type"] = iObjectType;
+                row["object_id"] = iObjectID;
                 row["time"] = dt;
                 table.Rows.Add(row);
                 adp.Update(table);
@@ -93,7 +88,8 @@ namespace MyCollection
             }
             //将用户数据储存于mydata
             collectionExist = true;
-            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id ='" + iCollectionID.ToString() + "'", myConnection);
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
+                "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
             new SqlCommandBuilder(myAdapter);
             myData = new DataTable();
             pullData();
@@ -142,13 +138,6 @@ namespace MyCollection
                 pullData();
                 return (int)myData.Rows[0]["object_type"];
             }
-            set
-            {
-                if (!collectionExist)
-                    throw new System.Exception("NO_EXIST");
-                myData.Rows[0]["object_type"] = value;
-                pushData();
-            }
         }
 
         public DateTime time
@@ -159,6 +148,70 @@ namespace MyCollection
                     throw new System.Exception("NO_EXIST");
                 pullData();
                 return (DateTime)myData.Rows[0]["time"];
+            }
+        }
+        //***********************对外接口**************************//
+        public bool judgeIfCollectionExist(long iConsumerID, int iObjectType, long iObjectID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
+                "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                return false;
+            else
+                return true;
+        }
+
+        public ArrayList getAllCollection(long iConsumerID, int iObjectType)
+        {
+            ArrayList list;
+            list = new ArrayList();
+
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE consumer_id  = '" + iConsumerID.ToString() +
+                "' AND object_type = '" + iObjectType.ToString() +"'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                list.Add(Convert.ToInt64(table.Rows[i]["id"]));
+            }
+            return list;
+        }
+
+        public void deleteCollectionByID(long iCollectionID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE id  = '" + iCollectionID + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+
+            if (table.Rows.Count == 0)
+                return;
+            DataRow row = table.Rows[0];
+            row.Delete();
+            adp.Update(table);
+            table.Rows.Clear();
+        }
+
+        public void deleteCollectionByDetail(long iConsumerID, int iObjectType, long iObjectID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
+                "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                return;
+            else
+            {
+                DataRow row = table.Rows[0];
+                row.Delete();
+                adp.Update(table);
+                table.Rows.Clear();
             }
         }
     }

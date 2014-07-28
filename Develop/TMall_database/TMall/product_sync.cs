@@ -59,7 +59,7 @@ namespace MyProduct
             productExist = false;
         }
 
-        public productSync(String iProduct, int iStoreID)
+        public productSync(String iProduct, long iStoreID)
         {
             if(iProduct == "")
                 return;
