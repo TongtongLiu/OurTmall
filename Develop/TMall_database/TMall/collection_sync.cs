@@ -32,7 +32,7 @@ namespace MyCollection
             myAdapter.Update(myData);//更新到数据库
         }
 
-        private bool ifExist(long iConsumerID, int iObjectType, long iObjectID)
+        private bool isExist(long iConsumerID, int iObjectType, long iObjectID)
         {
             SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
                 "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
@@ -63,7 +63,7 @@ namespace MyCollection
             myConnection = new SqlConnection(def.dbName);
             myConnection.Open();
 
-            if (!ifExist(iConsumerID, iObjectType, iObjectID))//不存在
+            if (!isExist(iConsumerID, iObjectType, iObjectID))//不存在
                 collectionExist = false;
             else
                 collectionExist = true;

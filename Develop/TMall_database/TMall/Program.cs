@@ -11,6 +11,7 @@ using MyProduct;
 using MyDef;
 using MyStore;
 using MyCollection;
+using MyAddress;
 
 namespace TMall_connectionSql
 {
@@ -68,7 +69,36 @@ namespace TMall_connectionSql
             //collectionSync delete = new collectionSync();
             //Console.ReadLine();
             //delete.deleteCollectionByDetail(2, 1, 5);
-            
+
+            /*****************addressSync操作说明******************/
+            //构造函数经过重构，可以通过：consumerid来创建新的地址，地址并没有查重.创建后consumerid被赋值,如果之前没有默认地址，则isdefault为1（设为默认），否则为0（不为默认）
+            addressSync iaddress1 = new addressSync(1);
+            //Console.ReadLine();
+
+            //除id，consumerid外，属性可以通过：实例名.xxx = xxx来设定，所有属性可以通过：实例名.xxx获取
+            iaddress1.country = "china";
+            iaddress1.city = "北京";
+            addressSync iadd2 = new addressSync(1);
+            iadd2.country = "china";
+            iadd2.city = "天津";
+
+            //Console.ReadLine();
+
+            //可以通过getAllAddress函数得到该用户所有地址id
+            //参数类型long iConsumerID，返回类型为arraylist（需要包含System.Collections），下为实例
+            addressSync iList = new addressSync();
+            ArrayList list = iList.getAllAddress(1);
+            //通过getAddressByID可以得到该地址id表中所有的信息，除id，consumerid外，属性可以通过：实例名.xxx = xxx来设定，所有属性可以通过：实例名.xxx获取
+            for (int i = 0; i < list.Count; i++)
+            {
+                addressSync temp = new addressSync();
+                temp.getAddressByID(Convert.ToInt64(list[i]));
+                Console.WriteLine(temp.country);
+            }
+
+            //可以通过deleteAddressByID函数删除，特别注意参数类型是long,请用convert.toint64转化
+            //下为实例
+            iList.deleteAddressByID(Convert.ToInt64(20));
         }
     }
 }
