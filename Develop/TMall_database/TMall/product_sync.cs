@@ -50,6 +50,26 @@ namespace MyProduct
                 return false;
             }
         }
+
+        public bool judgeIfProductExist(long iProductID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_product] WHERE id ='" + iProductID + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                return false;
+            else
+            {
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    if (Convert.ToInt64(table.Rows[i]["id"]) == iProductID)
+                        return true;
+                }
+                return false;
+            }
+        }
         //*********************************************************//
         public productSync()
         {
@@ -99,6 +119,26 @@ namespace MyProduct
             pullData();
         }
 
+        public productSync(long iProductID)
+        {
+            if (iProductID == 0)
+                return;
+            //构造myconnection对象
+            myConnection = new SqlConnection(def.dbName);
+            myConnection.Open();
+
+            if (!judgeIfProductExist(iProductID))//不存在
+                productExist = false;
+            else
+                productExist = true;
+
+            //将用户数据储存于mydata
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_product] WHERE id ='" + iProductID + "'", myConnection);
+            new SqlCommandBuilder(myAdapter);
+            myData = new DataTable();
+            pullData();
+        }
+
         //*********************************************************//
         public long id
         {
@@ -140,14 +180,14 @@ namespace MyProduct
             }
         }
 
-        public int price
+        public Decimal price
         {
             get
             {
                 if (!productExist)
                     throw new System.Exception("NO_EXIST");
                 pullData();
-                return (int)myData.Rows[0]["price"];
+                return (Decimal)myData.Rows[0]["price"];
             }
             set
             {
@@ -299,6 +339,24 @@ namespace MyProduct
                     throw new System.Exception("NO_EXIST");
                 myData.Rows[0]["img5"] = value;
                 pushData();
+            }
+        }
+
+        //*********************************************************//
+        public void deleteProductByID(long iProductID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_product] WHERE id  = '" + iProductID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                return;
+            else
+            {
+                DataRow row = table.Rows[0];
+                row.Delete();
+                adp.Update(table);
+                table.Rows.Clear();
             }
         }
     }
