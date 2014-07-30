@@ -12,6 +12,9 @@ using MyDef;
 using MyStore;
 using MyCollection;
 using MyAddress;
+using MyCategory;
+using MyProductCategory;
+using MyStoreCategory;
 
 namespace TMall_connectionSql
 {
@@ -46,7 +49,7 @@ namespace TMall_connectionSql
             bool flag = iproduct2.judgeIfProductExist("mac电脑",1);
             Console.WriteLine(flag);*/
 
-            productSync iproduct3 = new productSync("mac电脑", 1);
+            /*productSync iproduct3 = new productSync("mac电脑", 1);
             iproduct3.price = 9000;
             Console.WriteLine(iproduct3.price);
 
@@ -58,7 +61,9 @@ namespace TMall_connectionSql
 
             productSync iproduct4 = new productSync();
             for (int i = 1; i < 5; i++)
-                iproduct4.deleteProductByID(Convert.ToInt64(i));
+                iproduct4.deleteProductByID(Convert.ToInt64(i));*/
+            productSync ipro = new productSync();
+            ipro.deleteProductByID(16);
         }
 
         public void runCollection()
@@ -127,11 +132,64 @@ namespace TMall_connectionSql
             iList.deleteAddressByID(Convert.ToInt64(20));
         }
 
+        private void runCategory()
+        {
+            categorySync category = new categorySync();
+            ArrayList list = category.getAllCategory();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(list[i]);
+            }
+            //categorySync category = new categorySync("鼠标");
+        }
+
+        //每个类别销量最高的itopnum件产品（返回topnum与实际num中较小数的产品信息）
+        private DataTable getTopProductByName(long iTopNum, string iCategoryName)
+        {
+            categorySync category = new categorySync(iCategoryName);
+            product_belongto_categorySync belongs = new product_belongto_categorySync();
+            ArrayList productIDList = belongs.getProductID(category.id);
+            productSync product = new productSync();
+            DataTable tb = product.getProductOfTopSales(iTopNum, productIDList);
+            return tb;
+
+            //外部调用示例
+            //Program run = new Program();
+            //DataTable test = new DataTable();
+            //test = run.getTopProductByName(5, "超极本");
+            //Console.WriteLine(test.Rows[2]["product_name"]);
+        }
+
+        private ArrayList getAllCategoryOfStore(long iStoreID)//获得某一商店全部经营类别
+        {
+            store_sell_categorySync store = new store_sell_categorySync();
+            
+            ArrayList categoryList = store.getStoreCategoryID(iStoreID);
+            ArrayList categoryNameList = new ArrayList();
+            for (int i = 0; i < categoryList.Count; i++)
+            {
+                categorySync category = new categorySync();
+                string name = category.getCategoryByID(Convert.ToInt64(categoryList[i]));
+                categoryNameList.Add(name);
+            }
+            return categoryNameList;
+
+            //外部调用示例
+            //Program run = new Program();
+            //ArrayList list = run.getAllCategoryOfStore(1);
+            //for (int i = 0; i < list.Count; i++)
+            //    Console.WriteLine(list[i]);
+            //Console.ReadLine();
+        }
+
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            run.runProduct();
+            ArrayList list = run.getAllCategoryOfStore(1);
+            for (int i = 0; i < list.Count; i++)
+                Console.WriteLine(list[i]);
+            Console.ReadLine();
         }
     }
 }

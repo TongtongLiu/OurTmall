@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -358,6 +359,33 @@ namespace MyProduct
                 adp.Update(table);
                 table.Rows.Clear();
             }
+        }
+
+        public DataTable getProductOfTopSales(long iTopNum, ArrayList iProductID)//某一个类别下的top sales
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_product]", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable tableOrigin = new DataTable();
+            adp.Fill(tableOrigin);
+            DataTable tableSelect = tableOrigin.Clone();
+            for (int i = 0; i < iProductID.Count; i++)
+            {
+                DataRow[] dr = tableOrigin.Select("id = '" + iProductID[i] + "'");
+                tableSelect.ImportRow((DataRow)dr[0]);
+            }
+            DataTable tableSort = tableSelect.Clone();
+            DataView dv = tableSelect.DefaultView;
+            dv.Sort = "sales Desc";
+            tableSort = dv.ToTable();
+            tableSelect.Clear();
+            long num = iTopNum < tableSort.Rows.Count ? iTopNum : tableSort.Rows.Count;
+            for (int i = 0; i < num; i++)
+            {
+                DataRow dr = tableSort.Rows[i];
+                tableSelect.ImportRow((DataRow)dr);
+                //Console.WriteLine(tableSelect.Rows[i]["product_name"]);
+            }
+            return tableSelect;
         }
     }
 }

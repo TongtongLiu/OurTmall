@@ -32,6 +32,19 @@ namespace MyCategory
             myAdapter.Update(myData);//更新到数据库
         }
 
+        private void isExist(string iCategory)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_category] WHERE category_name  = '" + iCategory + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                categoryExist = false;
+            else
+                categoryExist = true;
+        }
+
         //*********************************************************//
         public categorySync()
         {
@@ -40,7 +53,7 @@ namespace MyCategory
             myConnection.Open();
             categoryExist = false;
         }
-        /*
+        
         public categorySync(string iCategory)
         {
             if(iCategory == "")
@@ -48,37 +61,90 @@ namespace MyCategory
             //构造myconnection对象
             myConnection = new SqlConnection(def.dbName);
             myConnection.Open();
-
-            if (!isExist(iConsumerID, iObjectType, iObjectID))//不存在
-                collectionExist = false;
-            else
-                collectionExist = true;
-
-            if (collectionExist == false)//不存在,添加
+            isExist(iCategory);
+            
+            if (categoryExist == false)//不存在,添加
             {
-                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection]", myConnection);
+                SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_category]", myConnection);
                 new SqlCommandBuilder(adp);
                 DataTable table = new DataTable();
                 DataRow row = table.NewRow();
                 adp.Fill(table);
 
                 DateTime dt = DateTime.Now;
-                row["consumer_id"] = iConsumerID;
-                row["object_type"] = iObjectType;
-                row["object_id"] = iObjectID;
-                row["time"] = dt;
+                row["category_name"] = iCategory;
                 table.Rows.Add(row);
                 adp.Update(table);
                 table.Rows.Clear();
-                //adp.Fill(table);
             }
             //将用户数据储存于mydata
-            collectionExist = true;
-            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
-                "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);
+            categoryExist = true;
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_category] WHERE category_name  = '" + iCategory + "'", myConnection);
             new SqlCommandBuilder(myAdapter);
             myData = new DataTable();
             pullData();
-        }*/
+        }
+
+        //*********************************************************//
+        public long id
+        {
+            get
+            {
+                if (!categoryExist)
+                    throw new System.Exception("NO_EXIST");
+                pullData();
+                return (long)myData.Rows[0]["id"];
+            }
+        }
+
+        public string category_name
+        {
+            get
+            {
+                if (!categoryExist)
+                    throw new System.Exception("NO_EXIST");
+                pullData();
+                return (string)myData.Rows[0]["category_name"];
+            }
+            set
+            {
+                if (!categoryExist)
+                    throw new System.Exception("NO_EXIST");
+                myData.Rows[0]["category_name"] = value;
+                pushData();
+            }
+        }
+
+        //*********************************************************//
+        public ArrayList getAllCategory()
+        {
+            ArrayList list;
+            list = new ArrayList();
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_category]", myConnection);
+            new SqlCommandBuilder(myAdapter);
+            myData = new DataTable();
+            myAdapter.Fill(myData);
+
+            for (int i = 0; i < myData.Rows.Count; i++)
+            {
+                list.Add(myData.Rows[i]["category_name"].ToString());
+            }
+            return list;
+        }
+
+        public String getCategoryByID(long iCategoryID)
+        {
+            ArrayList list;
+            list = new ArrayList();
+
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_category] WHERE id  = '" + iCategoryID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(myAdapter);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+
+            if (table.Rows.Count == 0)
+                throw new System.Exception("NO_EXIST");
+            return(table.Rows[0]["category_name"].ToString());
+        }
     }
 }
