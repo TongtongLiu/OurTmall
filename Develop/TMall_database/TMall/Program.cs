@@ -16,6 +16,8 @@ using MyCategory;
 using MyProductCategory;
 using MyStoreCategory;
 using MyOrder;
+using MyCart;
+using MyCartProduct;
 
 namespace TMall_connectionSql
 {
@@ -224,11 +226,33 @@ namespace TMall_connectionSql
             orderSync delete = new orderSync(2,2);
             delete.deleteProductByID(delete.id);
         }
+
+        private void runCart()
+        {
+            //构造函数经过重构，可以通过：用户id创建新购物车，如果存在，则可以通过实例名.xxx获取，否则创建
+            cartSync mycart = new cartSync(2);//2号用户的用户车
+            Console.WriteLine(mycart.id);
+            //可以通过传入用户id删除该用户的购物车
+            cartSync delete = new cartSync(2);
+            delete.deleteCartByID(2);
+        }
+
+        private void runCartProduct()
+        {
+            //构造函数经过重构，可以通过：CartID,ProductID新对应关系，如果存在，则可以通过实例名.xxx获取，否则创建
+            cart_productSync relationship = new cart_productSync(1, 2);//2号商品属于1号用户车
+            //默认quantity为1，可以修改
+            relationship.quantity = 3;
+            Console.WriteLine(relationship.quantity);
+            //可以通过传入用户id删除某购物车的某件商品
+            cart_productSync delete = new cart_productSync(1, 2);
+            delete.deleteRelationship(1, 2);
+        }
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            run.runOrder();
+            run.runCartProduct();
         }
     }
 }

@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="address_sync.cs" />
+    <Compile Include="cart_product_sync.cs" />
+    <Compile Include="cart_sync.cs" />
     <Compile Include="category_sync.cs" />
     <Compile Include="collection_sync.cs" />
     <Compile Include="consumer_sync.cs" />
