@@ -163,6 +163,8 @@ namespace TMall_connectionSql
             //Console.WriteLine(test.Rows[2]["product_name"]);
         }
 
+
+
         private ArrayList getAllCategoryOfStore(long iStoreID)//获得某一商店全部经营类别
         {
             store_sell_categorySync store = new store_sell_categorySync();
@@ -248,11 +250,70 @@ namespace TMall_connectionSql
             cart_productSync delete = new cart_productSync(1, 2);
             delete.deleteRelationship(1, 2);
         }
+
+        //每个类别销量最高的itopnum商店（返回topnum与实际num中较小数的产品信息）
+        private DataTable getTopStoreOfCategory(long iTopNum, string iCategoryName)
+        {
+            categorySync category = new categorySync(iCategoryName);
+            store_sell_categorySync belongs = new store_sell_categorySync();
+            ArrayList storeIDList = belongs.getCategoryStoreID(category.id);
+
+            for (int i = 0; i < storeIDList.Count; i++)//求每家商店的sales总和
+            {
+
+                DataTable list = getProductOfStoreAndCategory(Convert.ToInt64(storeIDList[i]), iCategoryName);
+                int total_sales = 0;
+                for (int j = 0; j < list.Rows.Count; j++)
+                    total_sales += Convert.ToInt32(list.Rows[0]["sales"]);
+                storeSync store = new storeSync(Convert.ToInt64(storeIDList[i]));
+                store.total_sales = total_sales;
+            }
+            storeSync iStore = new storeSync();
+            DataTable tb = iStore.getStoreOfTopSales(iTopNum, storeIDList);
+            return tb;
+
+            //外部调用示例
+            //Program run = new Program();
+            //DataTable test = new DataTable();
+            //test = run.getTopStoreOfCategory(1, "游戏本");
+            //Console.WriteLine(test.Rows[0]["store_name"]);
+        }
+
+        //总销量最高的itopnum商店（返回topnum与实际num中较小数的产品信息）
+        private DataTable getTopSalesStore(long iTopNum)
+        {
+            storeSync storeID = new storeSync();
+            ArrayList storeIDList = storeID.getAllStore();
+            for (int i = 0; i < storeIDList.Count; i++)//求每家商店的sales总和
+            {
+                productSync productList = new productSync();
+                DataTable list = productList.getAllProductOfStore(Convert.ToInt64(storeIDList[i]));
+                int total_sales = 0;
+                for (int j = 0; j < list.Rows.Count; j++)
+                    total_sales += Convert.ToInt32(list.Rows[0]["sales"]);
+                storeSync store = new storeSync(Convert.ToInt64(storeIDList[i]));
+                store.total_sales = total_sales;
+            }
+            storeSync iStore = new storeSync();
+            DataTable tb = iStore.getStoreOfTopSales(iTopNum, storeIDList);
+            return tb;
+
+            //外部调用示例
+            //Program run = new Program();
+            //DataTable test = new DataTable();
+            //test = run.getTopSalesStore(2);
+            //Console.WriteLine(test.Rows[0]["store_name"]);
+            //Console.WriteLine(test.Rows[1]["store_name"]);
+            
+        }
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            run.runCartProduct();
+            DataTable test = new DataTable();
+            test = run.getTopSalesStore(2);
+            Console.WriteLine(test.Rows[0]["store_name"]);
+            Console.WriteLine(test.Rows[1]["store_name"]);
         }
     }
 }

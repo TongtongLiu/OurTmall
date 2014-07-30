@@ -114,16 +114,16 @@ namespace MyStoreCategory
             ArrayList list;
             list = new ArrayList();
 
-            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_store_sell_category] WHERE category_id  = '" + iCategoryID.ToString() + "'", myConnection);
-            new SqlCommandBuilder(myAdapter);
-            myData = new DataTable();
-            pullData();
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_store_sell_category] WHERE category_id  = '" + iCategoryID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
 
-            if (myData.Rows.Count == 0)
+            if (table.Rows.Count == 0)
                 throw new System.Exception("NO_EXIST");
-            for (int i = 0; i < myData.Rows.Count; i++)
+            for (int i = 0; i < table.Rows.Count; i++)
             {
-                list.Add(Convert.ToInt64(myData.Rows[i]["store_id"]));
+                list.Add(Convert.ToInt64(table.Rows[i]["store_id"]));
             }
             return list;
         }

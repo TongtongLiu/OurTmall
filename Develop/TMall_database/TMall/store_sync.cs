@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -79,6 +80,7 @@ namespace MyStore
                 row["email"] = "";
                 row["score"] = 0;
                 row["description"] = "";
+                row["total_sales"] = 0;
                 row["logo"] = "";
                 table.Rows.Add(row);
                 adp.Update(table);
@@ -93,7 +95,24 @@ namespace MyStore
             pullData();
         }
 
+        public storeSync(long iStoreID)
+        {
+            myConnection = new SqlConnection(def.dbName);
+            myConnection.Open();
 
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_store] WHERE id ='" + iStoreID + "'", myConnection);
+            DataTable table = new DataTable();
+            new SqlCommandBuilder(adp);
+            adp.Fill(table);
+
+            if (table.Rows.Count == 0)
+                return;
+            storeExist = true;
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_store] WHERE id ='" + iStoreID + "'", myConnection);
+            new SqlCommandBuilder(myAdapter);
+            myData = new DataTable();
+            pullData();
+        }
         //*********************************************************//
         public long id
         {
@@ -232,6 +251,24 @@ namespace MyStore
             }
         }
 
+        public int total_sales
+        {
+            get
+            {
+                if (!storeExist)
+                    throw new System.Exception("NO_EXIST");
+                pullData();
+                return (int)myData.Rows[0]["total_sales"];
+            }
+            set
+            {
+                if (!storeExist)
+                    throw new System.Exception("NO_EXIST");
+                myData.Rows[0]["total_sales"] = value;
+                pushData();
+            }
+        }
+
         public string logo
         {
             get
@@ -248,6 +285,50 @@ namespace MyStore
                 myData.Rows[0]["logo"] = value;
                 pushData();
             }
+        }
+
+        public DataTable getStoreOfTopSales(long iTopNum, ArrayList iStoreID)//某一个类别下的top sales
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_store]", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable tableOrigin = new DataTable();
+            adp.Fill(tableOrigin);
+            DataTable tableSelect = tableOrigin.Clone();
+            for (int i = 0; i < iStoreID.Count; i++)
+            {
+                DataRow[] dr = tableOrigin.Select("id = '" + iStoreID[i] + "'");
+                tableSelect.ImportRow((DataRow)dr[0]);
+            }
+            DataTable tableSort = tableSelect.Clone();
+            DataView dv = tableSelect.DefaultView;
+            dv.Sort = "total_sales Desc";
+            tableSort = dv.ToTable();
+            tableSelect.Clear();
+            long num = iTopNum < tableSort.Rows.Count ? iTopNum : tableSort.Rows.Count;
+            for (int i = 0; i < num; i++)
+            {
+                DataRow dr = tableSort.Rows[i];
+                tableSelect.ImportRow((DataRow)dr);
+                //Console.WriteLine(tableSelect.Rows[i]["product_name"]);
+            }
+            return tableSelect;
+        }
+
+        
+        public ArrayList getAllStore()
+        {
+            ArrayList list;
+            list = new ArrayList();
+            myAdapter = new SqlDataAdapter("SELECT * FROM [tb_store]", myConnection);
+            new SqlCommandBuilder(myAdapter);
+            myData = new DataTable();
+            myAdapter.Fill(myData);
+
+            for (int i = 0; i < myData.Rows.Count; i++)
+            {
+                list.Add(myData.Rows[i]["id"]);
+            }
+            return list;
         }
     }
 }
