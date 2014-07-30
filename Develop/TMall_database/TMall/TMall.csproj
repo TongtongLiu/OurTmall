@@ -46,6 +46,7 @@
     <Compile Include="collection_sync.cs" />
     <Compile Include="consumer_sync.cs" />
     <Compile Include="def.cs" />
+    <Compile Include="order_sync.cs" />
     <Compile Include="product_belongto_category_sync.cs" />
     <Compile Include="product_sync.cs" />
     <Compile Include="Program.cs" />

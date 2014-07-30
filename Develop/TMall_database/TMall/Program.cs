@@ -15,6 +15,7 @@ using MyAddress;
 using MyCategory;
 using MyProductCategory;
 using MyStoreCategory;
+using MyOrder;
 
 namespace TMall_connectionSql
 {
@@ -182,14 +183,52 @@ namespace TMall_connectionSql
             //Console.ReadLine();
         }
 
+        private DataTable getAllProduct(long iStoreID)//得到某一店铺的全部商品，并按照由高到低返回
+        {
+            productSync product = new productSync();
+            DataTable list = product.getAllProductOfStore(iStoreID);
+            for (int i = 0; i < list.Rows.Count; i++)
+                Console.WriteLine(list.Rows[i]["product_name"]);
+                return list;
+        }
+
+        private DataTable getProductOfStoreAndCategory(long iStoreID, string iCategoryName)
+        {
+            categorySync category = new categorySync(iCategoryName);
+            product_belongto_categorySync belongs = new product_belongto_categorySync();
+            ArrayList productIDList = belongs.getProductID(category.id);
+            productSync product = new productSync();
+            DataTable list = product.getProductOfStoreAndCategory(iStoreID, productIDList);
+            return list;
+
+            //外部调用示例
+            //Program run = new Program();
+            //DataTable list = run.getProductOfStoreAndCategory(1, "笔记本");
+            //for (int i = 0; i < list.Rows.Count; i++)
+            //    Console.WriteLine(list.Rows[i]["product_name"]);
+        }
+
+        private void runOrder()
+        {
+            //构造函数经过重构，可以通过：orderSync创建新订单，创建后默认状态为
+            //consumer_id = iConsumerID;
+            //product_id = iProductID;
+            //discount= 1;
+            //state_id = 0;//待付款1，待收货2，待发货3
+            //delivery_address_id = 0;
+            //buy_number = 1;
+            orderSync order = new orderSync(2,1);//2号用户买了1号商品
+            Console.WriteLine(order.id);
+            //可以通过实例名.xxx来调用所有属性，可以通过实例名.xxx = xxx来修改state_id, address_id和buynumber
+            order.buy_number = 2;
+            orderSync delete = new orderSync(2,2);
+            delete.deleteProductByID(delete.id);
+        }
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            ArrayList list = run.getAllCategoryOfStore(1);
-            for (int i = 0; i < list.Count; i++)
-                Console.WriteLine(list[i]);
-            Console.ReadLine();
+            run.runOrder();
         }
     }
 }

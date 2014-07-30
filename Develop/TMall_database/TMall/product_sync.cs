@@ -387,5 +387,42 @@ namespace MyProduct
             }
             return tableSelect;
         }
+
+        public DataTable getAllProductOfStore(long iStoreID)//某一个店铺下的所有商品
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_product] WHERE store_id = '" + iStoreID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable tableOrigin = new DataTable();
+            adp.Fill(tableOrigin);
+            
+            DataTable tableSort = tableOrigin.Clone();
+            DataView dv = tableOrigin.DefaultView;
+            dv.Sort = "sales Desc";
+            tableSort = dv.ToTable();
+
+            return tableSort;
+        }
+
+        public DataTable getProductOfStoreAndCategory(long iStoreID, ArrayList iProductID)//某店铺某类别商品，排序返回
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_product] WHERE store_id = '" + iStoreID.ToString() + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable tableOrigin = new DataTable();
+            adp.Fill(tableOrigin);
+            DataTable tableSelect = tableOrigin.Clone();
+            for (int i = 0; i < iProductID.Count; i++)
+            {
+                DataRow[] dr = tableOrigin.Select("id = '" + iProductID[i] + "'");
+                if (dr.Length == 0)
+                    continue;
+                tableSelect.ImportRow((DataRow)dr[0]);
+            }
+            DataTable tableSort = tableSelect.Clone();
+            DataView dv = tableSelect.DefaultView;
+            dv.Sort = "sales Desc";
+            tableSort = dv.ToTable();
+            return tableSort;
+        }
+
     }
 }
