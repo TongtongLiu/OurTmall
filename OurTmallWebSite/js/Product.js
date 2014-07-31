@@ -5,7 +5,7 @@
     $.getJSON("./handler/Product_Info.ashx", { ID: qString.ID }, function (data, status) {
         if (status == "success") {
             //店铺名、logo、是否收藏
-            $("J_StoreHead a:first").attr("href", "./Store?ID=" + data.store_id);
+            $("#J_StoreHead a:first").attr("href", "./Store.aspx?ID=" + data.store_id);
             $("#J_StoreHead img").attr("src", data.store_logo);
             $("#J_StoreHead h1").text(data.store_name);
             var username = getCookie("isLogin");

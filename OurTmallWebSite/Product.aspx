@@ -145,8 +145,10 @@
                       <div class="banner-box">
                         <div style="width:990px;height:50px;background:#fff;font-family:lucida grande,lucida sans unicode,helvetica,arial,verdana,sans-serif;">
                           <div id="J_StoreHead" style="float:left;margin-top:20px;">
-                            <img src="" height="30px" style="vertical-align:top;">
-                            <h1 style="display:inline;color:#666;font-family:'Microsoft Yahei';font-size:1.7em;"></h1>
+                            <a href="" target="_blank" style="text-decoration:none;">
+                              <img src="" height="30px" style="vertical-align:top;">
+                              <h1 style="display:inline;color:#666;font-family:'Microsoft Yahei';font-size:1.7em;"></h1>
+                            </a>
                             <a href="javascript:void(0)" class="store-uncollected"></a>
                             <a href="javascript:void(0)" class="store-collected hidden"></a>
                           </div>
