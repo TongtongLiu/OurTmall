@@ -77,4 +77,45 @@ public partial class Cart : System.Web.UI.Page
             }
         }
     }
+
+    protected void J_DeleteSelect_Click(object sender, EventArgs e)
+    {
+        HttpCookie cookie = Request.Cookies.Get("isLogin");
+        if (cookie == null)
+        {
+            Response.Redirect("./Login.aspx?backurl=" + Request.Url);
+        }
+        else
+        {
+            consumerSync consumer = new consumerSync(cookie.Value);
+            cart_productSync cp = new cart_productSync();
+            cartSync cart = new cartSync(consumer.id);
+
+            if (ItemCheckbox0.Text != "0")
+            {
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox0.Text));
+                ItemCheckbox0.Text = "0";
+            }
+            if (ItemCheckbox1.Text != "0")
+            {
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox1.Text));
+                ItemCheckbox1.Text = "0";
+            }
+            if (ItemCheckbox2.Text != "0")
+            {
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox2.Text));
+                ItemCheckbox2.Text = "0";
+            }
+            if (ItemCheckbox3.Text != "0")
+            {
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox3.Text));
+                ItemCheckbox3.Text = "0";
+            }
+            if (ItemCheckbox4.Text != "0")
+            {
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox4.Text));
+                ItemCheckbox4.Text = "0";
+            }
+        }
+    }
 }
