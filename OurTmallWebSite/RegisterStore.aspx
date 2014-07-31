@@ -197,7 +197,7 @@
                         <b class="sn-edge"></b>
 
                         <div class="sn-container">
-                            <p class="sn-back-home"><i class="mui-global-iconfont">&#983339;</i><a href="http://www.tmall.com/">天猫首页</a></p><p id="login-info" class="sn-login-info"><em>喵，欢迎来天猫</em><a class="sn-login" href="http://login.tmall.com/?redirect_url=http%3A%2F%2Fregister.tmall.com%2F%3Fspm%3D3.7328325.a2226mz.2.Dg782T" target="_top">请登录</a><a class="sn-register" href="http://register.tmall.com/" target="_top">免费注册</a></p>
+                            <p class="sn-back-home"><i class="mui-global-iconfont">&#983339;</i><a href="./Index.aspx">天猫首页</a></p><p id="login-info" class="sn-login-info"><em>喵，欢迎来天猫</em><a class="sn-login" href="http://login.tmall.com/?redirect_url=http%3A%2F%2Fregister.tmall.com%2F%3Fspm%3D3.7328325.a2226mz.2.Dg782T" target="_top">请登录</a><a class="sn-register" href="http://register.tmall.com/" target="_top">免费注册</a></p>
                             <ul class="sn-quick-menu">
                                 <li class="sn-mytaobao menu-item j_MyTaobao">
                                     <div class="sn-menu">

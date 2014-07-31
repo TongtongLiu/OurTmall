@@ -118,7 +118,7 @@
       </dd>
     </dl>
     <!--[if IE 6]><br /><![endif]-->
-	  <h4 class="go-home"><a href="http://www.tmall.com/" target="_blank" title="返回天猫首页" >返回天猫首页</a></h4>    </div>
+	  <h4 class="go-home"><a href="./Index.aspx" target="_blank" title="返回天猫首页" >返回天猫首页</a></h4>    </div>
       <div id="copyright">
           <!-- foot links from tms start -->
       <p id="footer-tmallinfo">

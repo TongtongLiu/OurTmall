@@ -205,7 +205,7 @@
                     <div class="headerCon ">
                         <h1 id="mallLogo" class="mall-logo">
                             <span class="mlogo">
-                                <a href="http://www.tmall.com/" title="天猫Tmall.com" target="_top">
+                                <a href="./Index.aspx" title="天猫Tmall.com" target="_top">
                                 <s></s>Tmall.com天猫
                                 </a>
                             </span>

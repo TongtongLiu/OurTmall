@@ -47,7 +47,7 @@ public partial class Product : System.Web.UI.Page
             HttpCookie cookie2 = new HttpCookie("OrderID");
             consumerSync consumer = new consumerSync(cookie.Value);
             orderSync order = new orderSync(consumer.id, Convert.ToInt64(Session["ProductID"]));
-            order.buy_number += Convert.ToInt32(Quantity.Text);
+            order.buy_number += Convert.ToInt32(Request.Form["Quantity"]);
             cookie2.Value = order.id.ToString();
             Response.Cookies.Add(cookie2);
             Response.Redirect("./Order.aspx");
