@@ -1,0 +1,196 @@
+﻿#page #content .tshop-pbsm-shop-nav-ch .skin-box-bd {
+    position: relative;
+    height: 50px;
+    display: none;
+}
+#page #content .tshop-pbsm-shop-nav-ch .skin-box-bd {
+    position: relative;
+    height: 50px;
+    display: none;
+}
+
+#page #content .ovtxt1 {
+    overflow: hidden;
+    white-space: nowrap;
+    color: #F00;
+}
+
+#page #content .kv00 {
+    position: relative;
+}
+
+#page #content .kv01 {
+    position: absolute;
+    z-index: 1;
+}
+
+#page #content .kvborder {
+    border: 1px solid #DBDBDB;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 1px #D2D2D2;
+    -moz-box-shadow: 1px 1px 1px #D2D2D2;
+    box-shadow: 1px 1px 1px #D2D2D2;
+    position: relative;
+}
+
+#page #content .kvtop {
+    background: url(http://img04.taobaocdn.com/imgextra/i4/1917047079/T2lS5NXy8XXXXXXXXX_!!1917047079.png) no-repeat 50% 0;
+}
+
+#page #content .topnav li:hover {
+    background: url(../img/store-nav.png) no-repeat 50% 50%;
+    background-size: 100% 100%;
+}
+
+#page #content .mblue {
+    color: #000;
+    text-decoration: none;
+}
+
+#page #content .mblue:hover {
+    color: #0088CC;
+}
+
+#page #content .skulist dl dt,#page #content .skulist dl dd {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#page #content .skulist .sbuy {
+    width: 75px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #DBDBDB;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: url(http://img02.taobaocdn.com/imgextra/i2/1917047079/T2dBu3XrJaXXXXXXXX_!!1917047079.jpg) repeat-x 0 0;
+    text-align: center;
+    color: #0088CC;
+    display: block;
+    text-decoration: none;
+}
+
+#page #content .skulist .sbuy:hover {
+    background: url(http://img01.taobaocdn.com/imgextra/i1/1917047079/T2xGy5XsxXXXXXXXXX_!!1917047079.jpg) repeat-x 0 0;
+}
+
+#page #content .skulist .sbuy_l {
+    width: 75px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #DBDBDB;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: url(../img/store-btn.jpg) repeat-x 0 0;
+    text-align: center;
+    color: #FFF;
+    display: block;
+    text-decoration: none;
+}
+
+#page #content .skulist .sbuy_l:hover {
+    background: url(http://img01.taobaocdn.com/imgextra/i1/1917047079/T24gq5XpxXXXXXXXXX_!!1917047079.jpg) repeat-x 0 0;
+}
+
+#page #content .kvborder-o {
+    border: 1px solid #D7AB6A;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+#page #content .skuborder {
+    border: 4px solid #FFF;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: url(http://img04.taobaocdn.com/imgextra/i4/1917047079/T2ASSYXx4XXXXXXXXX_!!1917047079.jpg) repeat-x 0 top;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+
+#page #content .skuborder:hover {
+    border: 4px solid #85C3E9;
+    background: #FFF;
+}
+
+#page #content .kvlink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 20;
+}
+
+#page #content .kvlink a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#page #content .nbuy {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #DBDBDB;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: url(../img/store-btn.jpg) repeat-x 0 0;
+    text-align: center;
+    color: #FFF;
+    display: block;
+    text-decoration: none;
+}
+
+#page #content .nbuy:hover {
+    background: url(http://img01.taobaocdn.com/imgextra/i1/1917047079/T24gq5XpxXXXXXXXXX_!!1917047079.jpg) repeat-x 0 0;
+}
+
+#page #content .hds {
+    float: right;
+    margin-top: 23px;
+    margin-right: 3px;
+}
+
+#page #content .hds .hdsearch {
+    float: left;
+    width: 158px;
+    height: 19px;
+    background: url(http://img01.taobaocdn.com/imgextra/i1/1917047079/T2nRFWX6lXXXXXXXXX_!!1917047079.png) no-repeat 0 0;
+    transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+}
+
+#page #content .hds .hdsearch .s_text {
+    border: none;
+    background: none;
+    width: 115px;
+    height: 18px;
+    line-height: 18px;
+    transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    text-indent: 5px;
+    outline: none;
+}
+
+#page #content .hds .hdsearch .s_btn {
+    border: none;
+    background: none;
+    width: 15px;
+    height: 18px;
+    cursor: pointer;
+}

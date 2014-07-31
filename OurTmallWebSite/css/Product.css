@@ -1,0 +1,99 @@
+﻿@font-face {
+    font-family: tm-fp-font;
+    src: url(http://at.alicdn.com/t/font_1402326581_881551.eot);
+    src: url(http://at.alicdn.com/t/font_1402326581_881551.eot?#iefix) format('embedded-opentype'),url(../font/tm-fp-font.woff) format('woff'),url(../font/tm-fp-font.ttf) format('truetype'),url(../font/tm-fp-font.svg) format('svg')
+}
+
+.store-uncollected,
+.store-collected {
+  font-family: tm-fp-font !important;
+  font-size: 1.7em;
+  color: #c40000 !important;
+  text-decoration: none;
+  margin-left: 1em;
+}
+.store-uncollected:hover,
+.store-collected:hover {
+  text-decoration: none;
+}
+
+.product-uncollected,
+.product-collected {
+  font-family: tm-fp-font !important;
+  font-size: 14px;
+  color: #c40000 !important;
+  text-decoration: none;
+  margin-left: 1em;
+}
+.product-uncollected:hover,
+.product-collected:hover {
+  text-decoration: none;
+}
+
+.product-nav {
+  float: right;
+  font-size: 12px;
+  margin-top: 25px;
+  color: #666;
+}
+
+.product-nav span {
+  float: left;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.product-nav span a {
+  color: #666 !important;
+  text-decoration: none;
+}
+
+.product-nav span a:hover {
+  text-decoration: underline;
+}
+
+.aside-bar {
+   width: 189px;
+   height: auto;
+   padding-bottom: 20px;
+   color: #333;
+   font-size: 14px;
+   line-height: 1.5em;
+}
+
+.aside-bar-header {
+  width: 100%;
+  float: left;
+  background: #f2f2f2;
+  text-align: center;
+  font-family: "Microsoft Yahei";
+  font-size: 1.7em;
+  line-height: 50px;
+}
+
+.aside-bar-item {
+  float: left;
+  width: 80%;
+  margin: 20px 10%;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.aside-bar-item a {
+  text-decoration: none;
+  color: #666 !important;
+}
+.aside-bar-item a:hover {
+  color: #0088cc !important;
+}
+
+.aside-bar-item img {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.aside-bar-item p {
+  width: 100%;
+  text-align: center;
+  padding: 0.7em 0;
+  font-size: 1.2em;
+}
