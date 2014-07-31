@@ -13,7 +13,7 @@ public partial class Cart : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void J_PAY_Click(object sender, EventArgs e)
@@ -28,6 +28,8 @@ public partial class Cart : System.Web.UI.Page
             HttpCookie cookie2 = new HttpCookie("OrderID");
             consumerSync consumer = new consumerSync(cookie.Value);
             orderSync order;
+            cart_productSync cp = new cart_productSync();
+            cartSync cart = new cartSync(consumer.id);
             string OrderIDList = "";
 
             if (ItemCheckbox0.Text != "0")
@@ -35,30 +37,35 @@ public partial class Cart : System.Web.UI.Page
                 order = new orderSync(consumer.id, Convert.ToInt64(ItemCheckbox0.Text));
                 order.buy_number += Convert.ToInt32(Amount0.Text);
                 OrderIDList = OrderIDList + "+" + order.id.ToString();
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox0.Text));
             }
             if (ItemCheckbox1.Text != "0")
             {
                 order = new orderSync(consumer.id, Convert.ToInt64(ItemCheckbox1.Text));
                 order.buy_number += Convert.ToInt32(Amount1.Text);
                 OrderIDList = OrderIDList + "+" + order.id.ToString();
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox1.Text));
             }
             if (ItemCheckbox2.Text != "0")
             {
                 order = new orderSync(consumer.id, Convert.ToInt64(ItemCheckbox2.Text));
                 order.buy_number += Convert.ToInt32(Amount2.Text);
                 OrderIDList = OrderIDList + "+" + order.id.ToString();
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox2.Text));
             }
             if (ItemCheckbox3.Text != "0")
             {
                 order = new orderSync(consumer.id, Convert.ToInt64(ItemCheckbox3.Text));
                 order.buy_number += Convert.ToInt32(Amount3.Text);
                 OrderIDList = OrderIDList + "+" + order.id.ToString();
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox3.Text));
             }
             if (ItemCheckbox4.Text != "0")
             {
                 order = new orderSync(consumer.id, Convert.ToInt64(ItemCheckbox4.Text));
                 order.buy_number += Convert.ToInt32(Amount4.Text);
                 OrderIDList = OrderIDList + "+" + order.id.ToString();
+                cp.deleteRelationship(cart.id, Convert.ToInt64(ItemCheckbox4.Text));
             }
 
             if (OrderIDList != "")

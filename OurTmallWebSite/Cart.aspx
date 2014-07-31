@@ -114,8 +114,8 @@
                 <em id="J_SmallTotal">0.00
                 </em>
                 </strong>
-                <a href="javascript:void(0)" id="J_SmallSubmit" class="submit-btn submit-btn-disabled">结&nbsp;算
-                </a>
+                <!--<a href="javascript:void(0)" id="J_SmallSubmit" class="submit-btn submit-btn-disabled">结&nbsp;算
+                </a>-->
             </div>
             <div class="wrap-line">
                 <div class="floater" style="width: 123px; left: -1px;">
