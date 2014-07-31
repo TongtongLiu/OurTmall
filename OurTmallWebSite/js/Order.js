@@ -56,10 +56,10 @@
                 $(".tube-img:eq(" + i + ") a").attr("href", "./Product.aspx?ID=" + data[i].id);
                 $(".tube-master:eq(" + i + ") a").attr("href", "./Product.aspx?ID=" + data[i].id);
                 $(".tube-master:eq(" + i + ") a").text(data[i].name);
-                $(".tube-price:eq(" + i + ")").text(data[i].price.toFixed(2));
+                $(".tube-price:eq(" + (i + 1) + ")").text(data[i].price.toFixed(2));
                 $(".tc-amount:eq(" + i + ")").text(data[i].amount);
                 total += data[i].price * data[i].amount;
-                $(".tube-sum:eq(" + i + ") p").text((data[i].price * data[i].amount).toFixed(2));
+                $(".tube-sum p:eq(" + i + ")").text((data[i].price * data[i].amount).toFixed(2));
             }
             for (; i < maxn; i++) {
                 $(".grid-main:eq(" + i + ")").css("display", "none");

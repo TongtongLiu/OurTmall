@@ -292,7 +292,7 @@
             </div>
 
             <div class="control">
-                <a class="manageAddr" href="javascript:void(0)" data-mm="manange_address">
+                <a class="manageAddr" href="./ModifyDeliveryAddress.aspx" data-mm="manange_address">
                   管理收货地址
                 </a>
             </div>
@@ -638,9 +638,12 @@
             <div class="action">
               <!--<a href="#" class="back-cart">返回购物车修改
               </a>-->
+              <style type="text/css">
+                .asp-btn {margin-top: 0 !important;}
+              </style>
               <div id="submitOrder_1" class="go-wrapper">
                 <span tabindex="21" id="J_Go" data-mm="submit2" class="go-btn" data-clk="buy-order/mod/go:submit" title="提交订单">提交订单
-                <s><asp:Button ID="J_GO2" CssClass="go-btn" runat="server" Text="提交订单" OnClick="J_GO2_Click"/>
+                <s><asp:Button ID="J_GO2" CssClass="go-btn asp-btn" runat="server" Text="提交订单" OnClick="J_GO2_Click"/>
                 </s>
                 </span>
               </div>
