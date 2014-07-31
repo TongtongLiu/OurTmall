@@ -325,11 +325,24 @@ namespace TMall_connectionSql
             commentSync delete = new commentSync(2, 1);
             delete.deleteCommentByID(delete.id);
         }
+
+        private void getCartProduct(long iCartID)
+        {
+            cart_productSync productList = new cart_productSync();
+            ArrayList list = productList.getProductInCart(iCartID);
+            for (int i = 0; i < list.Count; i++)
+            {
+                productSync product = new productSync(Convert.ToInt64(list[i]));
+                Console.WriteLine(product.product_name);
+                Console.WriteLine(product.price);
+                Console.WriteLine();
+            }
+        }
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            run.runComment();
+            run.getCartProduct(1);
         }
     }
 }

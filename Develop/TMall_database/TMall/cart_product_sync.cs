@@ -158,5 +158,18 @@ namespace MyCartProduct
                 table.Rows.Clear();
             }
         }
+
+        public ArrayList getProductInCart(long iCartID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_cart_product] WHERE cart_id  = '" + iCartID + "'", myConnection);
+            new SqlCommandBuilder(adp);
+            DataTable table = new DataTable();
+            adp.Fill(table);
+
+            ArrayList list = new ArrayList();
+            for (int i = 0; i < table.Rows.Count; i++)
+                list.Add(table.Rows[i]["product_id"]);
+            return list;
+        }
     }
 }
