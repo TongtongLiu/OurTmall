@@ -40,7 +40,6 @@
 </head>
 
 <body data-spm="1">
-<form id="Form1" method="post" runat="Server">
   <div id="page">
     <div id="site-nav" data-spm="a2226mz"> 
       <div id="sn-bg">
@@ -124,12 +123,51 @@
       #sn-bd .sn-home {display: list-item!important;}
     </style>
 
+    <div id="header" data-spm="a2226n0">
+      <div class="headerLayout">
+        <!-- global logo -->            
+        <div class="headerCon ">
+          <h1 id="mallLogo" class="mall-logo">
+            <span class="mlogo">
+              <a href="./Index.aspx" title="天猫Tmall.com" target="_top">
+              <s></s>Tmall.com天猫
+              </a>
+            </span>
+            <span class="slogo">
+              <a href=""></a>
+            </span>
+          </h1>
+          <!--
+          <div class="header-extra">
+            <div id="mallSearch" class="mall-search">
+              <form class="mallSearch-form" name="searchTop" action="SearchResult.aspx" target="_top" accept-charset="utf-8">
+                <fieldset>
+                    <legend>天猫搜索</legend>
+                    <div class="mallSearch-input clearfix">
+                        <label for="mq" style="visibility: visible; display: none;">搜索 天猫 商品/品牌/店铺</label>
+
+                        <div class="s-combobox" id="s-combobox-113">
+                            <div class="s-combobox-input-wrap">
+                                <input type="text" name="search" id="mq" tabindex="9" accesskey="s" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" class="s-combobox-input" role="combobox" aria-haspopup="true" title="请输入搜索文字" aria-label="请输入搜索文字"/>
+                            </div>
+                        <label for="mq" class="s-combobox-placeholder" style="color: rgb(102, 102, 102); visibility: visible;"></label></div>
+                        <button type="submit">搜索</button>
+                    </div>
+                </fieldset>
+              </form>
+            </div>             
+          </div>
+            -->
+        </div>
+      </div>
+    </div>
+
     <div id="content" class="eshop head-expand tb-shop">
       <div id="hd" >
         <div class="layout grid-m J_TLayout" data-widgetid="5000008219" data-componentid="23" data-prototypeid="23" data-id="5000008219" data-max="">
           <div class="col-main">
             <div class="main-wrap J_TRegion" data-modules="main" data-width="h950" data-max="">
-              <div class="J_TModule" data-widgetid="5000008220"  id="shop5000008220"  data-componentid="5001"  data-spm='110.0.5001-5000008220'  microscope-data='5001-5000008220' data-title="店铺招牌"  ><!-- cache-info: componentId=5001 cacheKey=i-5000008220-10 cachedTime=2014-07-24 22:44:54 putHost=10.192.4.19 expireTime=14400 -->
+              <div class="J_TModule" data-widgetid="5000008220"  id="shop5000008220"  data-componentid="5001"  data-spm='110.0.5001-5000008220'  microscope-data='5001-5000008220' data-title="店铺招牌"  >
                 <div class="skin-box tb-module tshop-pbsm tshop-pbsm-shop-custom-banner">
                   <s class="skin-box-tp"><b></b></s>
                   <div class="skin-box-hd disappear">
@@ -162,16 +200,6 @@
                             <!-- <a href="javascript:void(0)" class="store-uncollected"></a> -->
                             <!-- <a href="javascript:void(0)" class="store-collected hidden"></a> -->
                           </div>
-                          <!-- 页面链接 -->
-                          <!--                           <div class="store-nav"> -->
-                          <!--                             <span><a href="#nav-category">经营范围</a></span> -->
-                          <!--                             <span> | </span> -->
-                          <!--                             <span><a href="#nav-hot">热门商品</a></span> -->
-                          <!--                             <span> | </span> -->
-                          <!--                             <span><a href="#nav-goods">所有商品</a></span> -->
-                          <!--                             <span> | </span> -->
-                          <!--                             <span><a href="#nav-info">店铺信息</a></span> -->
-                          <!--                           </div> -->
                         </div>
                       </div>
                     </div>
@@ -346,6 +374,5 @@
     </div>
     <div id="server-num">buffer010192004059.cm3</div>
   </div>
-</form>
 </body>
 </html>
