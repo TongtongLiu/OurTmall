@@ -51,7 +51,7 @@
               </div> 
             </li> 
             <li class="sn-cart mini-cart menu">
-              <i class="mui-iconfont">㕹</i> 
+              <!-- <i class="mui-iconfont">㕹</i>  -->
               <a class="sn-cart-link" href="#" target="_top" rel="nofollow">购物车 </a> 
             </li> 
             <li class="sn-favorite menu-item"> 
