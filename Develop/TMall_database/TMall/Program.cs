@@ -18,6 +18,7 @@ using MyStoreCategory;
 using MyOrder;
 using MyCart;
 using MyCartProduct;
+using MyComment;
 
 namespace TMall_connectionSql
 {
@@ -306,14 +307,29 @@ namespace TMall_connectionSql
             //Console.WriteLine(test.Rows[1]["store_name"]);
             
         }
+
+        private void runComment()
+        {
+            //构造函数经过重构，可以通过：用户id和商品id创建新评论，创建时，如果已经存在，则可通过实例名.xxx调用，不存在则创建，可通过实例名.xxx调用
+            //创建后默认状态为
+            //consumer_id = iConsumerID;
+            //product_id = iProductID;
+            //score= 5;
+            //detail = "无评论";//待付款1，待收货2，待发货3
+            //time与id为自动生成
+            commentSync comment = new commentSync(2, 1);//2号用户评论1号商品
+            Console.WriteLine(comment.id);
+            Console.WriteLine(comment.time);
+            //可以通过实例名.xxx来调用所有属性，可以通过实例名.xxx = xxx来修改score和detail
+            comment.detail = "好好好";
+            commentSync delete = new commentSync(2, 1);
+            delete.deleteCommentByID(delete.id);
+        }
         
         static void Main(string[] args)
         {
             Program run = new Program();
-            DataTable test = new DataTable();
-            test = run.getTopSalesStore(2);
-            Console.WriteLine(test.Rows[0]["store_name"]);
-            Console.WriteLine(test.Rows[1]["store_name"]);
+            run.runComment();
         }
     }
 }
