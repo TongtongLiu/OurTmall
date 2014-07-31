@@ -22,7 +22,7 @@
   <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="./js/Product.js"></script>
   <script type="text/javascript" src="./js/Global.js"></script>
-      <script type="text/javascript" src="./js/LoginInfo.js"></script>
+  <script type="text/javascript" src="./js/LoginInfo.js"></script>
   <style>
     #header .hot-query {*height: 14px}
     #header .hot-query li {display: inline-block;*zoom: 1;*display: inline;border-left: 1px solid #ccc;line-height: 1.1;*line-height: 1.2;padding: 0 12px;}
@@ -206,7 +206,7 @@
                     </p>
                   </li>
                   <li class="tm-ind-item tm-ind-emPointCount" data-spm="1000988">
-                    <a href="http://vip.tmall.com/vip/index.htm" target="_blank">
+                    <a href="javascript:void(0)" target="_blank">
                       <p class="tm-count tm-score"></p>
                       <p class="tm-label">送天猫积分</p>
                     </a>
