@@ -636,8 +636,8 @@
             <div id="J_CheckbarOption" class="option">
             </div>
             <div class="action">
-              <!--<a href="#" class="back-cart">返回购物车修改
-              </a>-->
+              <a href="./Cart.aspx" class="back-cart">返回购物车修改
+              </a>
               <style type="text/css">
                 .asp-btn {margin-top: 0 !important;}
               </style>
