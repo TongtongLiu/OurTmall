@@ -43,7 +43,11 @@
         var goodsList = new Array(num + 1).join(goodsItem);
         $(".goods-container").empty();
         $(".goods-container").append(goodsList);
-        $(".goods-item:nth-child(3)").css("border-right", "0");
+        $(".goods-item").each(function (index, item) {
+            if (index % 3 == 2) {
+                $(this).css("border-right", "0");
+            }
+        });
 
         for (var i = 0; i < num; i++) {
             $(".goods-item-img:eq(" + i + ") a").attr("href",
