@@ -76,6 +76,8 @@
 		<link rel="stylesheet" href="./css/global-min.css"/>
 		<link rel="stylesheet" href="./css/xcommonBase.css"/>
 		<script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="./js/Global.js"></script>
+      <script type="text/javascript" src="./js/LoginInfo.js"></script>
     </head>
 <body>
         <div id="mallPage" class="tms-page mallAct tmall-  page-not-market">
@@ -89,7 +91,6 @@
         <b class="sn-edge"></b> 
         <div class="sn-container"> 
           <p id="login-info" class="sn-login-info"></p>
-          <script type="text/javascript" src="./js/StoreLoginInfo.js"></script>
           <ul class="sn-quick-menu"> 
             <li class="sn-mytaobao menu-item j_MyTaobao"> 
               <div class="sn-menu"> 

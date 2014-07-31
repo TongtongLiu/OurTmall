@@ -53,6 +53,8 @@
             }
         </style>
       <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="./js/Global.js"></script>
+      <script type="text/javascript" src="./js/LoginInfo.js"></script>
     </head>
 
     <body>

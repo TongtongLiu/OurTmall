@@ -1,6 +1,0 @@
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\bin\Debug\TMall.exe.config
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\obj\Debug\TMall.csprojResolveAssemblyReference.cache
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\bin\Debug\TMall.exe
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\bin\Debug\TMall.pdb
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\obj\Debug\TMall.exe
-C:\Users\Xinyi_Zhao\Desktop\TMall\TMall\obj\Debug\TMall.pdb

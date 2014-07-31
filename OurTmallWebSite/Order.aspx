@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="./css/TstartMin.css">
   <link rel="stylesheet" href="./css/TdogMin.css">
   <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="./js/Global.js"></script>
   <script type="text/javascript" src="./js/Order.js"></script>
-
+  <script type="text/javascript" src="./js/Global.js"></script>
+      <script type="text/javascript" src="./js/LoginInfo.js"></script>
   <style>
     #header .hot-query {*height: 14px}
     #header .hot-query li {display: inline-block;*zoom: 1;*display: inline;border-left: 1px solid #ccc;line-height: 1.1;*line-height: 1.2;padding: 0 12px;}
@@ -36,7 +36,6 @@
         <b class="sn-edge"></b> 
         <div class="sn-container"> 
           <p id="login-info" class="sn-login-info"></p>
-          <script type="text/javascript" src="./js/LoginInfo.js"></script>
           <ul class="sn-quick-menu"> 
             <li class="sn-mytaobao menu-item j_MyTaobao"> 
               <div class="sn-menu"> 

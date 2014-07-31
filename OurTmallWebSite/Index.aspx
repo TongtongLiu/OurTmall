@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="./css/Index.css"/>
   <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="./js/Global.js"></script>
+  <script type="text/javascript" src="./js/LoginInfo.js"></script>
   <script type="text/javascript" src="./js/Index.js"></script>
 </head>
 
@@ -56,7 +57,6 @@
         <b class="sn-edge"></b> 
         <div class="sn-container"> 
           <p id="login-info" class="sn-login-info"></p>
-          <script type="text/javascript" src="./js/LoginInfo.js"></script>
           <ul class="sn-quick-menu"> 
             <li class="sn-mytaobao menu-item j_MyTaobao"> 
               <div class="sn-menu"> 
@@ -104,6 +104,7 @@
                   <div class="site-cont site-hot">
                     <h2>店铺推荐</h2>
                     <ul class="site-list">
+                      <!--
                       <li><a href="http://chaoshi.tmall.com/?spm=3.7346457.a2228ix.1">天猫超市</a></li>
                       <li><a href="http://miao.tmall.com/?spm=3.7346457.a2228ix.2">喵鲜生</a></li>
                       <li><a href="http://www.tmall.com/go/act/3c/diankj.php?spm=3.7346457.a2228ix.3">酷玩街</a></li>
@@ -126,11 +127,13 @@
                       <li><a href="http://yao.tmall.com/go/market/yiyao/zhonglaonian.php?spm=3.7346457.a2228ix.12">关爱长辈</a></li>
                       <li><a href="http://vip.tmall.com/vip/index.htm?spm=3.7346457.a2228ix.13">会员积分</a></li>
                       <li><a href="http://www.tmall.hk/">天猫国际</a></li>
+                        -->
                     </ul>
                   </div>
                   <div class="site-cont site-market">
                     <h2>商品推荐</h2>
                     <ul class="site-list">
+                      <!--
                       <li><a href="http://mei.tmall.com/?spm=3.7346457.a2228ix.15">美妆</a></li>
                       <li><a href="http://3c.tmall.com/?spm=3.7346457.a2228ix.16">电器</a></li>
                       <li><a href="http://nvzhuang.tmall.com/?spm=3.7346457.a2228ix.17">女装
@@ -155,17 +158,20 @@
                       <li><a href="http://dai.tmall.com/?spm=3.7346457.a2228ix.29">配饰
                         <i class="sn-sitemap-icon sn-sitemap-icon-new"></i>
                       </a></li>
+                        -->
                     </ul>
                   </div>
                   <div class="site-cont site-brand">
                     <h2>商品分类</h2>
                     <ul class="site-list">
+                      <!--
                       <li><a href="http://brand.tmall.com/?spm=3.7346457.a2228ix.30">大牌街</a></li>
                       <li><a href="http://brand.tmall.com/second.htm?spm=3.7346457.a2228ix.31">潮牌街</a></li>
                       <li><a href="http://brand.tmall.com/yuanChuang.htm?spm=3.7346457.a2228ix.32">天猫原创</a></li>
                       <li><a href="http://www.tmall.com/go/chn/brand/new-subject.php?spm=3.7346457.a2228ix.33">今日最大牌</a></li>
                       <li><a href="http://xfx.tmall.com/?spm=3.7346457.a2228ix.34">一周新发现</a></li>
                       <li><a href="http://brand.tmall.com/global.htm?spm=3.7346457.a2228ix.35">全球至尚</a></li>
+                        -->
                     </ul>
                   </div>
                 </div>
@@ -187,24 +193,24 @@
             </span>
           </h1>
           <div class="header-extra">
-                           <div id="mallSearch" class="mall-search">
-                               <form class="mallSearch-form" name="searchTop" action="SearchResult.aspx" target="_top" accept-charset="utf-8">
-                                   <fieldset>
-                                       <legend>天猫搜索</legend>
-                                       <div class="mallSearch-input clearfix">
-                                           <label for="mq" style="visibility: visible; display: none;">搜索 天猫 商品/品牌/店铺</label>
+              <div id="mallSearch" class="mall-search">
+                  <form class="mallSearch-form" name="searchTop" action="SearchResult.aspx" target="_top" accept-charset="utf-8">
+                      <fieldset>
+                          <legend>天猫搜索</legend>
+                          <div class="mallSearch-input clearfix">
+                              <label for="mq" style="visibility: visible; display: none;">搜索 天猫 商品/品牌/店铺</label>
 
-                                           <div class="s-combobox" id="s-combobox-113">
-                                               <div class="s-combobox-input-wrap">
-                                                   <input type="text" name="search" id="mq" tabindex="9" accesskey="s" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" class="s-combobox-input" role="combobox" aria-haspopup="true" title="请输入搜索文字" aria-label="请输入搜索文字"/>
-                                               </div>
-                                           <label for="mq" class="s-combobox-placeholder" style="color: rgb(102, 102, 102); visibility: visible;"></label></div>
-                                           <button type="submit">搜索</button>
-                                       </div>
-                                   </fieldset>
-                               </form>
-                           </div>             
-                       </div>
+                              <div class="s-combobox" id="s-combobox-113">
+                                  <div class="s-combobox-input-wrap">
+                                      <input type="text" name="search" id="mq" tabindex="9" accesskey="s" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" class="s-combobox-input" role="combobox" aria-haspopup="true" title="请输入搜索文字" aria-label="请输入搜索文字"/>
+                                  </div>
+                              <label for="mq" class="s-combobox-placeholder" style="color: rgb(102, 102, 102); visibility: visible;"></label></div>
+                              <button type="submit">搜索</button>
+                          </div>
+                      </fieldset>
+                  </form>
+              </div>             
+          </div>
         </div>
       </div>
     </div>

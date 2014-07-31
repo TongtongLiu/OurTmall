@@ -38,7 +38,8 @@
             <link rel="stylesheet" href="CSS/global-min2.css"/>
             <link rel="stylesheet" href="CSS/globalHeader-min.css"/>
             <link href="CSS/xcommonBase.css" rev="stylesheet" rel="stylesheet"/>
-            
+            <script type="text/javascript" src="./js/Global.js"></script>
+      <script type="text/javascript" src="./js/LoginInfo.js"></script>
             
             <!--head fix rgn-->
             <style>
@@ -69,7 +70,6 @@
         <b class="sn-edge"></b> 
         <div class="sn-container"> 
           <p id="login-info" class="sn-login-info"></p>
-          <script type="text/javascript" src="./js/LoginInfo.js"></script>
           <ul class="sn-quick-menu"> 
             <li class="sn-mytaobao menu-item j_MyTaobao"> 
               <div class="sn-menu"> 
