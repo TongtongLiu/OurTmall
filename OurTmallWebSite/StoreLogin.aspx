@@ -28,7 +28,7 @@
   <div id="header">
     <div id="header-inner">
       <div class="logo">
-        <a href="http://www.tmall.com" target="_self"><img src="http://img02.taobaocdn.com/tps/i2/T1zjasXpBXXXcKFznB-284-40.png" alt="Tmall.com天猫" /></a>
+        <a href="./Index.aspx"` target="_self"><img src="http://img02.taobaocdn.com/tps/i2/T1zjasXpBXXXcKFznB-284-40.png" alt="Tmall.com天猫" /></a>
       </div>
     </div>
 
