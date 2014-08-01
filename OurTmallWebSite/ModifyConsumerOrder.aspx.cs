@@ -137,6 +137,40 @@ public partial class ModifyConsumerOrder : System.Web.UI.Page
             ConsumerOrderList.DataSource = dvPds;
             ConsumerOrderList.DataBind();
         }
+        /*for (int i = 0; i < ConsumerOrderList.Items.Count; i++)
+        {
+            Label tempLabel = (Label)ConsumerOrderList.Items[i].FindControl("ConsumerOrderStatus");
+            //LinkButton cancel = (LinkButton)ConsumerOrderList.Items[i].FindControl("CancelOrder");
+            //LinkButton comment = (LinkButton)ConsumerOrderList.Items[i].FindControl("CommentLink");
+            Label oidlb = (Label)ConsumerOrderList.Items[i].FindControl("ConsumerOrderID");
+            Panel area = (Panel)ConsumerOrderList.Items[i].FindControl("OperationArea");
+            if (tempLabel.Text == "订单状态：<br/>待付款")
+            {
+                LinkButton cancel = new LinkButton();
+                cancel.CommandName = oidlb.Text.Substring(4);
+                cancel.Text = "取消订单";
+                cancel.Command += new CommandEventHandler(DeleteOrderCorrect);
+                area.Controls.Add(cancel);
+
+                Label place = new Label();
+                place.Text = "  ";
+                area.Controls.Add(place);
+
+                LinkButton payOrder = new LinkButton();
+                payOrder.CommandName = oidlb.Text.Substring(4);
+                payOrder.Text = "付款";
+                payOrder.Command += new CommandEventHandler(PayOrderClick);
+                area.Controls.Add(payOrder);
+            }
+            else if (tempLabel.Text == "订单状态：<br/>交易成功")
+            {
+                LinkButton comment = new LinkButton();
+                comment.Text = "评论";
+                comment.CommandName = oidlb.Text.Substring(4);
+                comment.Command += new CommandEventHandler(ConfirmAndCommentCorrect);
+                area.Controls.Add(comment);
+            }
+        }*/
     }
     protected void IndexChanging(object sender, EventArgs e)
     {
@@ -152,6 +186,40 @@ public partial class ModifyConsumerOrder : System.Web.UI.Page
         }
         ViewState["pageindex"] = pageindex;
         Bind();
+        for (int i = 0; i < ConsumerOrderList.Items.Count; i++)
+        {
+            Label tempLabel = (Label)ConsumerOrderList.Items[i].FindControl("ConsumerOrderStatus");
+            //LinkButton cancel = (LinkButton)ConsumerOrderList.Items[i].FindControl("CancelOrder");
+            //LinkButton comment = (LinkButton)ConsumerOrderList.Items[i].FindControl("CommentLink");
+            Label oidlb = (Label)ConsumerOrderList.Items[i].FindControl("ConsumerOrderID");
+            Panel area = (Panel)ConsumerOrderList.Items[i].FindControl("OperationArea");
+            if (tempLabel.Text == "订单状态：<br/>待付款")
+            {
+                LinkButton cancel = new LinkButton();
+                cancel.CommandName = oidlb.Text.Substring(4);
+                cancel.Text = "取消订单";
+                cancel.Command += new CommandEventHandler(DeleteOrderCorrect);
+                area.Controls.Add(cancel);
+
+                Label place = new Label();
+                place.Text = "  ";
+                area.Controls.Add(place);
+
+                LinkButton payOrder = new LinkButton();
+                payOrder.CommandName = oidlb.Text.Substring(4);
+                payOrder.Text = "付款";
+                payOrder.Command += new CommandEventHandler(PayOrderClick);
+                area.Controls.Add(payOrder);
+            }
+            else if (tempLabel.Text == "订单状态：<br/>交易成功")
+            {
+                LinkButton comment = new LinkButton();
+                comment.Text = "评论";
+                comment.CommandName = oidlb.Text.Substring(4);
+                comment.Command += new CommandEventHandler(ConfirmAndCommentCorrect);
+                area.Controls.Add(comment);
+            }
+        }
     }
     protected void DeleteOrderCorrect(object sender, CommandEventArgs e)
     {

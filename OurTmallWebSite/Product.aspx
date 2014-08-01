@@ -206,7 +206,7 @@
                     <p class="tm-count tm-sales"></p>
                     <p class="tm-label">销量</p>
                     <p class="tm-rate tm-rate2">
-                      <span class="c-value-no"><em></em></span>
+                      <span class="tm-myrate c-value-no"><em></em></span>
                     </p>
                   </li>
                   <li class="tm-ind-item tm-ind-emPointCount" data-spm="1000988">

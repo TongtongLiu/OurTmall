@@ -32,12 +32,11 @@
             $(".tm-score").text(parseInt(data.price / 10));
             $(".tm-sales").text(data.sales);
             $(".tm-rate2").append(data.score);
-            $(".tm-rate span").addClass("c-value-" + data.score.toString().replace(/\./, "d"));
+            $(".tm-myrate").addClass("c-value-" + data.score.toString().replace(/\./, "d"));
             $("#score3").css("width", data.score * 100 / 5 + "%");
             $("#score3 em").text(data.score);
             $("#score1").text(data.score);
             $("#score2").addClass("c-value-" + data.score.toString().replace(/\./, "d"));
-            $("#score3").removeClass("c-value-" + data.score.toString().replace(/\./, "d"));
             $("#score3").addClass("score-value-" + data.score.toString().replace(/\./, "d"));
 
             var imgItem = "<li><a href='javascript:void(0)'><img></a></li>";
