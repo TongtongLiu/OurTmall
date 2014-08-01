@@ -129,6 +129,6 @@ public partial class ModifyStoreCollection : System.Web.UI.Page
 	}
 	protected void AddToCartHyperLink_Command(object sender, CommandEventArgs e)
 	{
-		Response.Redirect("Product.aspx");
+		Response.Redirect("Store.aspx?ID=" + e.CommandName);
 	}
 }

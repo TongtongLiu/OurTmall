@@ -42,8 +42,10 @@
     var OrderIDStr = getCookie("OrderID");
     var OrderIDList = OrderIDStr.split("+");
     var IDList = {};
-    for (var i = 0; i < OrderIDList.length; i++) {
-        IDList["ID" + i] = parseInt(OrderIDList[i]);
+    if (OrderIDStr != "") {
+        for (var i = 0; i < OrderIDList.length; i++) {
+            IDList["ID" + i] = parseInt(OrderIDList[i]);
+        }
     }
     $.getJSON("./handler/Order_Products.ashx", IDList, function (data, status) {
         if (status == "success") {

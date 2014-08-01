@@ -114,8 +114,8 @@
                 <em id="J_SmallTotal">0.00
                 </em>
                 </strong>
-                <a href="javascript:void(0)" id="J_SmallSubmit" class="submit-btn submit-btn-disabled">结&nbsp;算
-                </a>
+                <!--<a href="javascript:void(0)" id="J_SmallSubmit" class="submit-btn submit-btn-disabled">结&nbsp;算
+                </a>-->
             </div>
             <div class="wrap-line">
                 <div class="floater" style="width: 123px; left: -1px;">
@@ -242,8 +242,8 @@
                               </li>
                               <li class="td td-op">
                                 <div class="td-inner">
-                                  <a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
-                                  </a>
+                                  <!--<a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
+                                  </a>-->
                                 </div>
                               </li>
                             </ul>
@@ -320,8 +320,8 @@
                               </li>
                               <li class="td td-op">
                                 <div class="td-inner">
-                                  <a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
-                                  </a>
+                                  <!--<a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
+                                  </a>-->
                                 </div>
                               </li>
                             </ul>
@@ -398,8 +398,8 @@
                               </li>
                               <li class="td td-op">
                                 <div class="td-inner">
-                                  <a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
-                                  </a>
+                                  <!--<a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
+                                  </a>-->
                                 </div>
                               </li>
                             </ul>
@@ -476,8 +476,8 @@
                               </li>
                               <li class="td td-op">
                                 <div class="td-inner">
-                                  <a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
-                                  </a>
+                                  <!--<a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
+                                  </a>-->
                                 </div>
                               </li>
                             </ul>
@@ -554,8 +554,8 @@
                               </li>
                               <li class="td td-op">
                                 <div class="td-inner">
-                                  <a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
-                                  </a>
+                                  <!--<a href="javascript:void(0)" title="删除" class="J_Del J_MakePoint">删除
+                                  </a>-->
                                 </div>
                               </li>
                             </ul>
@@ -582,7 +582,30 @@
                 </div>&nbsp;全选
               </div>
               <div class="operations">
-                <a href="#" hidefocus="true" class="J_DeleteSelected">删除</a>
+                <!-- <a href="#" hidefocus="true" class="J_DeleteSelected">删除</a> -->
+                <style type="text/css">
+                  .delete-btn {border: 0; background: transparent; margin-left: 2em;}
+                </style>
+                <script type="text/javascript">
+                  function JPAYClick() {
+                    if (parseInt($("#ItemCheckbox0").val()) != 0) {
+                      $("#ItemCheckbox0").val($(".J_ItemImg:eq(0)").attr("data-id"));
+                    }
+                    if (parseInt($("#ItemCheckbox1").val()) != 0) {
+                      $("#ItemCheckbox1").val($(".J_ItemImg:eq(1)").attr("data-id"));
+                    }
+                    if (parseInt($("#ItemCheckbox2").val()) != 0) {
+                      $("#ItemCheckbox2").val($(".J_ItemImg:eq(2)").attr("data-id"));
+                    }
+                    if (parseInt($("#ItemCheckbox3").val()) != 0) {
+                      $("#ItemCheckbox3").val($(".J_ItemImg:eq(3)").attr("data-id"));
+                    }
+                    if (parseInt($("#ItemCheckbox4").val()) != 0) {
+                      $("#ItemCheckbox4").val($(".J_ItemImg:eq(4)").attr("data-id"));
+                    }
+                  }
+                  </script>
+                <asp:Button ID="J_DeleteSelect" CssClass="J_DeleteSelected delete-btn" runat="Server" Text="删除" OnClick="J_DeleteSelect_Click" OnClientClick="return JPAYClick();"/>
               </div>
               <div class="float-bar-right">
                 <div class="pipe">
@@ -599,25 +622,7 @@
                   <style type="text/css">
                     .asp-btn {position: absolute; right: 0; opacity: 0}
                   </style>
-                  <script type="text/javascript">
-                    function JPAYClick() {
-                      if (parseInt($("#ItemCheckbox0").val()) != 0) {
-                        $("#ItemCheckbox0").val($(".J_ItemImg:eq(0)").attr("data-id"));
-                      }
-                      if (parseInt($("#ItemCheckbox1").val()) != 0) {
-                        $("#ItemCheckbox1").val($(".J_ItemImg:eq(1)").attr("data-id"));
-                      }
-                      if (parseInt($("#ItemCheckbox2").val()) != 0) {
-                        $("#ItemCheckbox2").val($(".J_ItemImg:eq(2)").attr("data-id"));
-                      }
-                      if (parseInt($("#ItemCheckbox3").val()) != 0) {
-                        $("#ItemCheckbox3").val($(".J_ItemImg:eq(3)").attr("data-id"));
-                      }
-                      if (parseInt($("#ItemCheckbox4").val()) != 0) {
-                        $("#ItemCheckbox4").val($(".J_ItemImg:eq(4)").attr("data-id"));
-                      }
-                    }
-                  </script>
+                  
                   <asp:Button id="J_PAY" CssClass="submit-btn asp-btn" Text="结&nbsp;算" runat="Server" OnClick="J_PAY_Click" OnClientClick="return JPAYClick();"/>
                   <a href="javascript:void(0)" id="J_Go" class="submit-btn submit-btn-disabled">
                    <span>结&nbsp;算

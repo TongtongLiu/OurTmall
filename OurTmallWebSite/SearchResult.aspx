@@ -17,7 +17,7 @@
         <link rel="dns-prefetch" href="http://tmm.taobao.com/"/>
         <link rel="dns-prefetch" href="http://bar.tmall.com/"/>    
         <meta name="spm-id" content=""/>
-        <title>消息</title>
+        <title>搜索结果</title>
         <link rel="shortcut icon" href="http://g.tbcdn.cn/mui/global/1.2.35/file/favicon.ico" type="image/x-icon"/>
         <link title="天猫Tmall.com" href="http://g.tbcdn.cn/mui/global/1.2.35/file/search.xml" type="application/opensearchdescription+xml" rel="search"/>
         <script>

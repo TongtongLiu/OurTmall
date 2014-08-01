@@ -146,15 +146,15 @@
         }
     });
 
-    $(".J_DeleteSelected").bind({
-        click: function () {
-            $(".J_CheckBoxItem").each(function (index, item) {
-                if (parseInt($(this).val()) > 0) {
-                    $(this).val("0");
-                    $(this).parents(".J_ItemBody").slideToggle();
-                }
-            });
-            getTotalPrice();
-        }
-    })
+//     $(".J_DeleteSelected").bind({
+//         click: function () {
+//             $(".J_CheckBoxItem").each(function (index, item) {
+//                 if (parseInt($(this).val()) > 0) {
+//                     $(this).val("0");
+//                     $(this).parents(".J_ItemBody").slideToggle();
+//                 }
+//             });
+//             getTotalPrice();
+//         }
+//     })
 })
