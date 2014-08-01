@@ -33,7 +33,7 @@ namespace MyCollection
             myAdapter.Update(myData);//更新到数据库
         }
 
-        private bool isExist(long iConsumerID, int iObjectType, long iObjectID)
+        public bool isExist(long iConsumerID, int iObjectType, long iObjectID)
         {
             SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_collection] WHERE object_id  = '" + iObjectID.ToString() +
                 "' AND object_type = '" + iObjectType.ToString() + "' AND consumer_id='" + iConsumerID.ToString() + "'", myConnection);

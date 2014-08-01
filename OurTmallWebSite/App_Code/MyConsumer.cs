@@ -98,6 +98,19 @@ namespace MyConsumer
                 return true;
         }
 
+        public bool judgeIfUserExist(long UserID)
+        {
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM [tb_consumer] WHERE id ='" + UserID + "'", myConnection);
+            DataTable table = new DataTable();
+
+            new SqlCommandBuilder(adp);
+            adp.Fill(table);
+            if (table.Rows.Count == 0)
+                return false;
+            else
+                return true;
+        }
+
         //------------------------------------------//
         public consumerSync()
         {
@@ -129,6 +142,25 @@ namespace MyConsumer
             UserExist = -1;
             setUserByName(UserName);
         }
+
+        public consumerSync(long UserID)
+        {
+            myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["connStr"].ToString());
+            myConnection.Open();
+            if (judgeIfUserExist(UserID))
+                UserExist = 0;
+            else
+                UserExist = -1;
+
+            if (UserExist == 0)
+            {
+                myAdapter = new SqlDataAdapter("SELECT * FROM [tb_consumer] WHERE id  = '" + UserID.ToString() + "'", myConnection);
+                new SqlCommandBuilder(myAdapter);
+                myData = new DataTable();
+                pullData();
+            }
+        }
+
         //------------------数据库数据内容修改函数------------------------//
         public long id
         {

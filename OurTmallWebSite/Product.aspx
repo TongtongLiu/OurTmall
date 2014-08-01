@@ -149,8 +149,9 @@
                               <img src="" height="30px" style="vertical-align:top;">
                               <h1 style="display:inline;color:#666;font-family:'Microsoft Yahei';font-size:1.7em;"></h1>
                             </a>
-                            <a href="javascript:void(0)" class="store-uncollected"></a>
-                            <a href="javascript:void(0)" class="store-collected hidden"></a>
+                            <!--<a href="javascript:void(0)" class="store-uncollected"></a>
+                            <a href="javascript:void(0)" class="store-collected hidden"></a>-->
+                            <asp:LinkButton runat="server" id="StoreCollected" CssClass="store-collected" Text="" OnCommand="StoreCollected_Command" />
                           </div>
                           <!-- 页面链接 -->
                           <div class="product-nav">
@@ -181,8 +182,9 @@
                 <div class="tb-detail-hd">
                     <h1 data-spm="1000983">
                       <span></span>
-                      <a href="javascript:void(0)" class="product-uncollected"></a>
-                      <a href="javascript:void(0)" class="product-collected hidden"></a>
+                      <!--<a href="javascript:void(0)" class="product-uncollected"></a>
+                      <a href="javascript:void(0)" class="product-collected hidden"></a>-->
+                      <asp:LinkButton runat="server" id="ProductCollected" CssClass="product-collected" Text="" OnCommand="ProductCollected_Command" />
                     </h1>
                 </div>
                 <!-- 商品价格 -->
@@ -407,23 +409,53 @@
                       </div>
                     </div>
 
-                    <!--<div class="rate-grid">
+                    <style type="text/css">
+                      #CommentSpace {
+                        margin: 3em 0 1em 0;
+                        padding: 2em;
+                        border: 1px solid gray;
+                      }
+                      #CommentSpace span {
+                        font-size: 1.2em;
+                        display: block;
+                        width: 100%;
+                        margin: auto;
+                      }
+                      #CommentSpace .score {
+                        margin-top: 1.3em;
+                      }
+                      .ok {
+                        float: right;
+                        margin-right: 1em;
+                        width: 6em;
+                      }
+                    </style>
+                    <div id="CommentSpace">
+                      <span class="comment">评论：</span>
+                      <asp:TextBox ID="J_Comment" Columns="142" TextMode="MultiLine" Rows="7" runat="server"/>
+                      <span class="score">评分：
+                        <asp:TextBox ID="J_Score" Columns="2" runat="server"/>
+                        <asp:Button ID="J_OK" CssClass="ok" Text="确&nbsp;定" runat="server" OnClick="J_OK_Click"/>
+                      </span>
+                    </div>
+
+                    <div class="rate-grid">
                       <table>
                         <tbody>
                           <tr>
                             <td class="tm-col-master">
                               <div class="tm-rate-content">
                                 <div class="tm-rate-fulltxt">
-                                  电脑很好
+                                  评论内容
                                 </div>
                               </div>
                               <div class="tm-rate-date">
-                                03.09
+                                评论时间
                               </div>
                             </td>
                             <td class="col-meta">
                               <div class="rate-sku">
-                                <p title="">
+                                <p title="">评分
                                 </p>
                               </div>
                               <div class="rate-user-profile">
@@ -433,23 +465,164 @@
                             </td>
                             <td class="col-author">
                               <div class="rate-user-info">
-                                丫
-                                          <span>***
-                                          </span>0
-                                          <span>（匿名）
-                                          </span>
+                                评论者姓名
                               </div>
                               <div class="rate-user-grade">
-                                <a href="http://vip.tmall.com" target="_blank" title="天猫T3达人">
-                                  <img src="http://a.tbcdn.cn/apps/membermanager/v2/image/tmall-grade-t3-18.png">
-                                </a>
-                                <img title="91 - 150个买家信用积分" src="http://a.tbcdn.cn/sys/common/icon/rank_s/b_red_4.gif">
+                                
                               </div>
                             </td>
                           </tr>
                         </tbody>
                       </table>
-                    </div>-->
+                    </div>
+
+                    <div class="rate-grid">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td class="tm-col-master">
+                              <div class="tm-rate-content">
+                                <div class="tm-rate-fulltxt">
+                                  评论内容
+                                </div>
+                              </div>
+                              <div class="tm-rate-date">
+                                评论时间
+                              </div>
+                            </td>
+                            <td class="col-meta">
+                              <div class="rate-sku">
+                                <p title="">
+                                  评分
+                                </p>
+                              </div>
+                              <div class="rate-user-profile">
+                                <p title="">
+                                </p>
+                              </div>
+                            </td>
+                            <td class="col-author">
+                              <div class="rate-user-info">
+                                评论者姓名
+                              </div>
+                              <div class="rate-user-grade">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="rate-grid">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td class="tm-col-master">
+                              <div class="tm-rate-content">
+                                <div class="tm-rate-fulltxt">
+                                  评论内容
+                                </div>
+                              </div>
+                              <div class="tm-rate-date">
+                                评论时间
+                              </div>
+                            </td>
+                            <td class="col-meta">
+                              <div class="rate-sku">
+                                <p title="">
+                                  评分
+                                </p>
+                              </div>
+                              <div class="rate-user-profile">
+                                <p title="">
+                                </p>
+                              </div>
+                            </td>
+                            <td class="col-author">
+                              <div class="rate-user-info">
+                                评论者姓名
+                              </div>
+                              <div class="rate-user-grade">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="rate-grid">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td class="tm-col-master">
+                              <div class="tm-rate-content">
+                                <div class="tm-rate-fulltxt">
+                                  评论内容
+                                </div>
+                              </div>
+                              <div class="tm-rate-date">
+                                评论时间
+                              </div>
+                            </td>
+                            <td class="col-meta">
+                              <div class="rate-sku">
+                                <p title="">
+                                  评分
+                                </p>
+                              </div>
+                              <div class="rate-user-profile">
+                                <p title="">
+                                </p>
+                              </div>
+                            </td>
+                            <td class="col-author">
+                              <div class="rate-user-info">
+                                评论者姓名
+                              </div>
+                              <div class="rate-user-grade">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="rate-grid">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td class="tm-col-master">
+                              <div class="tm-rate-content">
+                                <div class="tm-rate-fulltxt">
+                                  评论内容
+                                </div>
+                              </div>
+                              <div class="tm-rate-date">
+                                评论时间
+                              </div>
+                            </td>
+                            <td class="col-meta">
+                              <div class="rate-sku">
+                                <p title="">
+                                  评分
+                                </p>
+                              </div>
+                              <div class="rate-user-profile">
+                                <p title="">
+                                </p>
+                              </div>
+                            </td>
+                            <td class="col-author">
+                              <div class="rate-user-info">
+                                评论者姓名
+                              </div>
+                              <div class="rate-user-grade">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
 
                     <div class="rate-page">
                       <div class="rate-paginator">

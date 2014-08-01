@@ -21,17 +21,17 @@
         <link rel="shortcut icon" href="http://g.tbcdn.cn/mui/global/1.2.35/file/favicon.ico" type="image/x-icon"/>
         <link title="天猫Tmall.com" href="http://g.tbcdn.cn/mui/global/1.2.35/file/search.xml" type="application/opensearchdescription+xml" rel="search"/>
         <script>
-        		window.g_config = {};
-        		window.g_config.headerVersion = '1.0.0';
-        		window.g_config.loadModulesLater = true;
+          window.g_config = {};
+          window.g_config.headerVersion = '1.0.0';
+          window.g_config.loadModulesLater = true;
         </script>
         <script>
-        		window.g_config = window.g_config || {};
-        		window.g_config.moduleTimeStamp = {
-        				minilogin: 20130704,
-        				globalCss: 20131024,
-        				globalJs: 20131018
-        		}
+          window.g_config = window.g_config || {};
+          window.g_config.moduleTimeStamp = {
+            minilogin: 20130704,
+            globalCss: 20131024,
+            globalJs: 20131018
+          }
         </script>
         <link rel="stylesheet" href="./css/global.css"/>
         <!--head fix rgn-->
@@ -265,8 +265,8 @@
 
 																		<div class="img-item-title">
 																				<input type="checkbox" runat="server" id="CollectionCheckBox" value='<%#Eval("CollectionCheckBoxValue") %>' />
-																				<asp:Image runat="server" ImageUrl="~/img/decorate.png" />
-																				<asp:HyperLink runat="server" Text='<%#Eval("HyperLinkText") %>' NavigateUrl='<%#Eval("HyperLinkURL") %>' Target="_blank" />
+																				<asp:Image ID="Image2" runat="server" ImageUrl="~/img/decorate.png" />
+																				<asp:HyperLink ID="HyperLink1" runat="server" Text='<%#Eval("HyperLinkText") %>' NavigateUrl='<%#Eval("HyperLinkURL") %>' Target="_blank" />
 																		</div>
 
 																		<div class="g_price-box" align="center">
@@ -278,7 +278,7 @@
 
 																		<div class="item-controller">
 																				<asp:LinkButton id="DeleteCollectionHyperLink" runat="server" ToolTip="删除" CssClass="J_FavDel fav-item-del miconfont J_NewPoint" Text="Ť" OnCommand="DeleteCollectionHyperLink_Command" CommandName='<%#Eval("DeleteCollectionCommandName") %>' />
-																				<asp:LinkButton id="AddToCartHyperLink" runat="server" ToolTip="加入购物车" CssClass="J_AddToCartBtnTgr cart-icon miconfont J_NewPoint" Text="ŭ" />
+																				<asp:LinkButton id="AddToCartHyperLink" runat="server" ToolTip="加入购物车" CssClass="J_AddToCartBtnTgr cart-icon miconfont J_NewPoint" Text="ŭ" OnCommand="AddToCartHyperLink_Command" CommandName='<%#Eval("AddToCartCommandName") %>' />
 																		</div>
 
 																</div>

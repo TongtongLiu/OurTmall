@@ -102,4 +102,56 @@
         if (parseInt(n) > 1)
             $("#Quantity").val(parseInt(n) - 1);
     });
+
+    //刷新评论信息
+    var page = 0;
+    var pagesize = 5;
+    var flushcomment = function () {
+        $.getJSON("./handler/Product_Comments.ashx", { ID: qString.ID, Page: page }, function (data, status) {
+            if (status == "success") {
+                $(".rate-grid").css("display", "none");
+                for (var i = 0; i < data.length && i < pagesize; i++) {
+                    $(".tm-rate-fulltxt:eq(" + i + ")").text(data[i].detail);
+                    $(".tm-rate-date:eq(" + i + ")").text(data[i].time);
+                    $(".rate-sku:eq(" + i + ") p").text(data[i].score);
+                    $(".rate-user-info:eq(" + i + ")").text(data[i].name);
+                    $(".rate-grid:eq(" + i + ")").css("display", "block");
+                }
+                $(".rate-paginator span:eq(1)").text(page + 1);
+            }
+        })
+    };
+    flushcomment();
+
+    $(".rate-page-prev").click(function () {
+        if (page > 0) {
+            page--;
+            flushcomment();
+        }
+    })
+
+    $(".rate-page-next").click(function () {
+        if ($(".rate-grid:visible").length == pagesize) {
+            page++;
+            flushcomment();
+        }
+    })
+
+    //根据情况决定是否加载评论框
+    if (qString.CID == null) {
+        $("#CommentSpace").hide();
+    }
+
+    $("#J_Score").keypress(function (event) {
+        if ((event.which < 48 && event.which != 8 && event.which != 46) || event.which > 57)
+            return false;
+        if (event.which == 48 && $(this).val() == "")
+            return false;
+        if (event.which == 46 && $(this).val().indexOf(".") >= 0)
+            return false;
+        if (48 <= event.which && event.which <= 57)
+            if (parseFloat($(this).val() + (event.which - 48)) > 5)
+                return false;
+        return true;
+    });
 })

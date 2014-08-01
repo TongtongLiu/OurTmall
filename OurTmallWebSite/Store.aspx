@@ -72,7 +72,7 @@
                 <div class="menu-bd"> 
                   <div class="menu-bd-panel"> 
                     <a href="#" target="_top" rel="nofollow">收藏的宝贝</a> 
-                    <a href="#" target="_top" rel="nofollow">收藏的店铺</a> 
+                    <a href="#" target="_top" rel="nofollow">收藏的店铺</a>
                   </div> 
                 </div> 
               </div> 
@@ -158,8 +158,9 @@
                               <img src="" height="30px">
                               <h1 style="display:inline;color:#666;font-family:'Microsoft Yahei';font-size:1.7em;"></h1>
                             </a>
-                            <a href="javascript:void(0)" class="store-uncollected"></a>
-                            <a href="javascript:void(0)" class="store-collected hidden"></a>
+                            <!--<a href="javascript:void(0)" class="store-uncollected"></a>
+                            <a href="javascript:void(0)" class="store-collected hidden"></a>-->
+                            <asp:LinkButton runat="server" id="StoreCollected" CssClass="store-collected" Text="" OnCommand="StoreCollected_Command" />
                           </div>
                           <!-- 页面链接 -->
                           <div class="store-nav">

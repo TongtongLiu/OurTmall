@@ -62,22 +62,10 @@ public partial class ModifyConsumerOrder : System.Web.UI.Page
                 payOrder.Command += new CommandEventHandler(PayOrderClick);
                 area.Controls.Add(payOrder);
             }
-            else if (tempLabel.Text == "订单状态：<br/>待发货")
-            {
-
-            }
-            else if (tempLabel.Text == "订单状态：<br/>待收货")
+            else if (tempLabel.Text == "订单状态：<br/>交易成功")
             {
                 LinkButton comment = new LinkButton();
-                comment.Text = "确认收货并评论";
-                comment.CommandName = oidlb.Text.Substring(4);
-                comment.Command += new CommandEventHandler(ConfirmAndCommentCorrect);
-                area.Controls.Add(comment);
-            }
-            else if (tempLabel.Text == "订单状态：<br/>已收货")
-            {
-                LinkButton comment = new LinkButton();
-                comment.Text = "确认收货并评论";
+                comment.Text = "评论";
                 comment.CommandName = oidlb.Text.Substring(4);
                 comment.Command += new CommandEventHandler(ConfirmAndCommentCorrect);
                 area.Controls.Add(comment);
@@ -116,11 +104,7 @@ public partial class ModifyConsumerOrder : System.Web.UI.Page
             if (Convert.ToInt32(list.Rows[i]["state_id"]) == 1)
                 state = "待付款";
             else if (Convert.ToInt32(list.Rows[i]["state_id"]) == 2)
-                state = "待发货";
-            else if (Convert.ToInt32(list.Rows[i]["state_id"]) == 3)
-                state = "待收货";
-            else if (Convert.ToInt32(list.Rows[i]["state_id"]) == 4)
-                state = "已收货";
+                state = "交易成功";
             dt.Rows.Add(list.Rows[i]["time"], "订单号：" + list.Rows[i]["id"].ToString(), tempStore.store_name, "Store.aspx?ID=" + tempStore.id, tempProduct.img1, "Product.aspx?ID=" + tempProduct.id, "Product.aspx?ID=" + tempProduct.id, tempProduct.product_name, "价格：<br/>￥" + tempProduct.price, "个数：<br/>" + list.Rows[i]["buy_number"], "订单状态：<br/>" + state);
         }
 
@@ -175,23 +159,10 @@ public partial class ModifyConsumerOrder : System.Web.UI.Page
         temp.deleteProductByID(Convert.ToInt64(e.CommandName));
         Response.Redirect("ModifyConsumerOrder.aspx");
     }
-    protected void DeleteOrderError(object sender, CommandEventArgs e)
-    {
-        string script = "<script language='javascript'>window.alert('抱歉，您已经付过款，目前不能取消订单');</script>";
-        //ClientScript.RegisterStartupScript(this.GetType(), "success", script);
-        System.Web.HttpContext.Current.Response.Write(script);
-    }
     protected void ConfirmAndCommentCorrect(object sender, CommandEventArgs e)
     {
         orderSync temp = new orderSync(Convert.ToInt64(e.CommandName));
-        temp.state_id = 4;
-        Response.Redirect("Product.aspx");
-    }
-    protected void ConfirmAndCommentError(object sender, CommandEventArgs e)
-    {
-        string script = "<script language='javascript'>window.alert('抱歉，您还未收到产品，不能进行评论');</script>";
-        //ClientScript.RegisterStartupScript(this.GetType(), "success", script);
-        System.Web.HttpContext.Current.Response.Write(script);
+        Response.Redirect("Product.aspx?ID=" + temp.product_id + "&CID=" + userID.ToString() + "#CommentSpace");
     }
 
     protected void PayOrderClick(object sender, CommandEventArgs e)
